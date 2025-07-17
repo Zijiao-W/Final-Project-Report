@@ -1,0 +1,22 @@
+project:
+  title: "Final Project"
+  type: book
+
+book:
+  title: "Final Project Report"
+  chapters:
+    - index.qmd
+    - Question.qmd
+    - Import.qmd
+    - Tidy.qmd
+    - Transform.qmd
+    - Visualize.qmd
+    - Model.qmd
+    - Communicate.qmd
+
+format:
+  html:
+    bibliography: Citations.bib
+
+editor: visual
+

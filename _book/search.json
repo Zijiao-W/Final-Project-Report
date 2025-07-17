@@ -1,0 +1,162 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Final Project Report",
+    "section": "",
+    "text": "0.1 Quarto\nQuarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Index</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#running-code",
+    "href": "index.html#running-code",
+    "title": "Final Project Report",
+    "section": "0.2 Running Code",
+    "text": "0.2 Running Code\nWhen you click the Render button a document will be generated that includes both content and the output of embedded code. You can embed code like this:\n\n1 + 1\n\n[1] 2\n\n\nYou can add options to executable code like this\n\n\n[1] 4\n\n\nThe echo: false option disables the printing of code (only output is displayed).",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Index</span>"
+    ]
+  },
+  {
+    "objectID": "Question.html",
+    "href": "Question.html",
+    "title": "2  Question",
+    "section": "",
+    "text": "2.1 Quarto\nQuarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Question</span>"
+    ]
+  },
+  {
+    "objectID": "Question.html#running-code",
+    "href": "Question.html#running-code",
+    "title": "2  Question",
+    "section": "2.2 Running Code",
+    "text": "2.2 Running Code\nWhen you click the Render button a document will be generated that includes both content and the output of embedded code. You can embed code like this:\n\n1 + 1\n\n[1] 2\n\n\nYou can add options to executable code like this\n\n\n[1] 4\n\n\nThe echo: false option disables the printing of code (only output is displayed).",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Question</span>"
+    ]
+  },
+  {
+    "objectID": "Import.html",
+    "href": "Import.html",
+    "title": "3  Import",
+    "section": "",
+    "text": "3.1 Quarto\nQuarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Import</span>"
+    ]
+  },
+  {
+    "objectID": "Import.html#running-code",
+    "href": "Import.html#running-code",
+    "title": "3  Import",
+    "section": "3.2 Running Code",
+    "text": "3.2 Running Code\nWhen you click the Render button a document will be generated that includes both content and the output of embedded code. You can embed code like this:\n\n1 + 1\n\n[1] 2\n\n\nYou can add options to executable code like this\n\n\n[1] 4\n\n\nThe echo: false option disables the printing of code (only output is displayed).",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Import</span>"
+    ]
+  },
+  {
+    "objectID": "Tidy.html",
+    "href": "Tidy.html",
+    "title": "4  Tidy",
+    "section": "",
+    "text": "4.1 Quarto\nQuarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Tidy</span>"
+    ]
+  },
+  {
+    "objectID": "Tidy.html#running-code",
+    "href": "Tidy.html#running-code",
+    "title": "4  Tidy",
+    "section": "4.2 Running Code",
+    "text": "4.2 Running Code\nWhen you click the Render button a document will be generated that includes both content and the output of embedded code. You can embed code like this:\n\n1 + 1\n\n[1] 2\n\n\nYou can add options to executable code like this\n\n\n[1] 4\n\n\nThe echo: false option disables the printing of code (only output is displayed).",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Tidy</span>"
+    ]
+  },
+  {
+    "objectID": "Transform.html",
+    "href": "Transform.html",
+    "title": "5  Transform",
+    "section": "",
+    "text": "5.1 Quarto\nQuarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Transform</span>"
+    ]
+  },
+  {
+    "objectID": "Transform.html#running-code",
+    "href": "Transform.html#running-code",
+    "title": "5  Transform",
+    "section": "5.2 Running Code",
+    "text": "5.2 Running Code\nWhen you click the Render button a document will be generated that includes both content and the output of embedded code. You can embed code like this:\n\n1 + 1\n\n[1] 2\n\n\nYou can add options to executable code like this\n\n\n[1] 4\n\n\nThe echo: false option disables the printing of code (only output is displayed).",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Transform</span>"
+    ]
+  },
+  {
+    "objectID": "Visualize.html",
+    "href": "Visualize.html",
+    "title": "6  Visualize",
+    "section": "",
+    "text": "6.1 Quarto\nQuarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Visualize</span>"
+    ]
+  },
+  {
+    "objectID": "Visualize.html#running-code",
+    "href": "Visualize.html#running-code",
+    "title": "6  Visualize",
+    "section": "6.2 Running Code",
+    "text": "6.2 Running Code\nWhen you click the Render button a document will be generated that includes both content and the output of embedded code. You can embed code like this:\n\n1 + 1\n\n[1] 2\n\n\nYou can add options to executable code like this\n\n\n[1] 4\n\n\nThe echo: false option disables the printing of code (only output is displayed).",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Visualize</span>"
+    ]
+  },
+  {
+    "objectID": "Model.html",
+    "href": "Model.html",
+    "title": "7  Model",
+    "section": "",
+    "text": "7.1 Quarto\nQuarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org.",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Model</span>"
+    ]
+  },
+  {
+    "objectID": "Model.html#running-code",
+    "href": "Model.html#running-code",
+    "title": "7  Model",
+    "section": "7.2 Running Code",
+    "text": "7.2 Running Code\nWhen you click the Render button a document will be generated that includes both content and the output of embedded code. You can embed code like this:\n\n1 + 1\n\n[1] 2\n\n\nYou can add options to executable code like this\n\n\n[1] 4\n\n\nThe echo: false option disables the printing of code (only output is displayed).",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Model</span>"
+    ]
+  },
+  {
+    "objectID": "Communicate.html",
+    "href": "Communicate.html",
+    "title": "8  Communicate",
+    "section": "",
+    "text": "8.1 Quarto\nQuarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org.",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Communicate</span>"
+    ]
+  },
+  {
+    "objectID": "Communicate.html#running-code",
+    "href": "Communicate.html#running-code",
+    "title": "8  Communicate",
+    "section": "8.2 Running Code",
+    "text": "8.2 Running Code\nWhen you click the Render button a document will be generated that includes both content and the output of embedded code. You can embed code like this:\n\n1 + 1\n\n[1] 2\n\n\nYou can add options to executable code like this\n\n\n[1] 4\n\n\nThe echo: false option disables the printing of code (only output is displayed).",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Communicate</span>"
+    ]
+  }
+]

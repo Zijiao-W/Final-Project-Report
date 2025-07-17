@@ -1,6 +1,7 @@
 project:
   title: "Final Project"
   type: book
+  output-dir: docs
 
 book:
   title: "Final Project Report"

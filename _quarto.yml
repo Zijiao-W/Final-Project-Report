@@ -3,6 +3,8 @@ project:
   type: book
   output-dir: docs
 
+bibliography: citations.bib
+
 book:
   title: "Final Project Report"
   chapters:
@@ -14,10 +16,6 @@ book:
     - Visualize.qmd
     - Model.qmd
     - Communicate.qmd
-
-format:
-  html:
-    bibliography: Citations.bib
 
 editor: visual
 

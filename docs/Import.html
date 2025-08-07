@@ -54,7 +54,27 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -198,8 +218,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#quarto" id="toc-quarto" class="nav-link active" data-scroll-target="#quarto"><span class="header-section-number">3.1</span> Quarto</a></li>
-  <li><a href="#running-code" id="toc-running-code" class="nav-link" data-scroll-target="#running-code"><span class="header-section-number">3.2</span> Running Code</a></li>
+  <li><a href="#import" id="toc-import" class="nav-link active" data-scroll-target="#import"><span class="header-section-number">4</span> Import</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">5</span> References</a></li>
   </ul>
 </nav>
     </div>
@@ -225,28 +245,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="quarto" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="quarto"><span class="header-section-number">3.1</span> Quarto</h2>
-<p>Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <a href="https://quarto.org" class="uri">https://quarto.org</a>.</p>
+<section id="import" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Import</h1>
+<p>As described in the Abstract of the index, the data set used in this project is baseballr, <span class="citation" data-cites="rawdata"><span>“Baseballr Data”</span> (<a href="#ref-rawdata" role="doc-biblioref">n.d.</a>)</span>, which consists of many functionalities. For this data solution in particular, the only imported data is</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(baseballr)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>main_data <span class="ot">&lt;-</span> <span class="fu">bref_daily_batter</span>(<span class="st">"2024-01-01"</span>, <span class="st">"2025-07-01"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The first important thing to note is that the data is from January 2024 to July of 2025. This is to make sure that the data is up to date as much as possible for stakeholders to make the right decisions. Outdated data are not as important, because player performance can vary between seasons, due to aging, the environment that they are playing in, and so on. It also narrows down the scope of the data as to make it easier to work with.</p>
+<p>As to why this data set is chosen - it is because this data set contains the exact parameters needed to calculate xWOBA, along with other information such as player name, age, and team. As seen in Figure 3.1, the data set contains a lot of columns. For the sake of accessibility, the columns not involved in the calculation of xWOBA will not be explained. The columns that are involved will be explained in later chapters. For now, this is just a preview of the data.</p>
+<p><img src="images/clipboard-2781495400.png" class="img-fluid"></p>
+<p>Figure 3.1, processed from <span class="citation" data-cites="rawdata"><span>“Baseballr Data”</span> (<a href="#ref-rawdata" role="doc-biblioref">n.d.</a>)</span></p>
+<p>This data solution also assumes that the stakeholders have a working knowledge of xWOBA - this is evident since anyone who is concerned with player performance would at least know about the metric. More specific things such as what each xWOBA value entails was given in Figure 1.1.</p>
 </section>
-<section id="running-code" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="running-code"><span class="header-section-number">3.2</span> Running Code</h2>
-<p>When you click the <strong>Render</strong> button a document will be generated that includes both content and the output of embedded code. You can embed code like this:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
-</div>
-</div>
-<p>You can add options to executable code like this</p>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 4</code></pre>
-</div>
-</div>
-<p>The <code>echo: false</code> option disables the printing of code (only output is displayed).</p>
+<section id="references" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> References</h1>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-rawdata" class="csl-entry" role="listitem">
+<span>“Baseballr Data.”</span> n.d. <a href="https://billpetti.github.io/baseballr/index.html" class="uri">https://billpetti.github.io/baseballr/index.html</a>.
+</div>
+</div>
 </section>
 
 </main> <!-- /main -->

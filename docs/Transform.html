@@ -54,7 +54,27 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -198,8 +218,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#quarto" id="toc-quarto" class="nav-link active" data-scroll-target="#quarto"><span class="header-section-number">5.1</span> Quarto</a></li>
-  <li><a href="#running-code" id="toc-running-code" class="nav-link" data-scroll-target="#running-code"><span class="header-section-number">5.2</span> Running Code</a></li>
+  <li><a href="#transforming-data" id="toc-transforming-data" class="nav-link active" data-scroll-target="#transforming-data"><span class="header-section-number">6</span> Transforming Data</a></li>
+  <li><a href="#model-fitting" id="toc-model-fitting" class="nav-link" data-scroll-target="#model-fitting"><span class="header-section-number">7</span> Model Fitting</a></li>
+  <li><a href="#duckdb-storage" id="toc-duckdb-storage" class="nav-link" data-scroll-target="#duckdb-storage"><span class="header-section-number">8</span> DuckDB Storage</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">9</span> References</a></li>
   </ul>
 </nav>
     </div>
@@ -225,28 +247,67 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="quarto" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="quarto"><span class="header-section-number">5.1</span> Quarto</h2>
-<p>Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <a href="https://quarto.org" class="uri">https://quarto.org</a>.</p>
+<section id="transforming-data" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Transforming Data</h1>
+<p>After tidying the data, it is ready to be transformed for use.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>transform_data <span class="ot">&lt;-</span> clean_data <span class="sc">|&gt;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Makes it so that each player is assigned to one team and level only</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">team =</span> <span class="fu">str_replace</span>(team, <span class="st">",.*"</span>, <span class="st">""</span>),</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">level =</span> <span class="fu">str_replace</span>(level, <span class="st">",.*"</span>, <span class="st">""</span>),</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Avoids division by 0 for xWOBA calculation</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">xwoba =</span> <span class="fu">if_else</span>(</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>      (ab <span class="sc">+</span> bb <span class="sc">+</span> sf <span class="sc">+</span> hbp) <span class="sc">!=</span> <span class="dv">0</span>,</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>      (<span class="fl">0.689</span> <span class="sc">*</span> (bb <span class="sc">-</span> ibb) <span class="sc">+</span> <span class="fl">0.72</span> <span class="sc">*</span> hbp <span class="sc">+</span> <span class="fl">0.882</span> <span class="sc">*</span> x1b <span class="sc">+</span> <span class="fl">1.254</span> <span class="sc">*</span> x2b <span class="sc">+</span> <span class="fl">1.59</span> <span class="sc">*</span> x3b <span class="sc">+</span> <span class="fl">2.05</span> <span class="sc">*</span> hr) </span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>      <span class="sc">/</span> (ab <span class="sc">+</span> bb <span class="sc">+</span> sf <span class="sc">+</span> hbp),</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>      <span class="dv">0</span>),</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">xwoba =</span> <span class="fu">round</span>(xwoba, <span class="dv">5</span>),</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Change league/level names to make it clearer</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">level =</span> <span class="fu">if_else</span>(level <span class="sc">==</span> <span class="st">"Maj-NL"</span>, <span class="st">"National League"</span>, <span class="st">"American League"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
-<section id="running-code" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="running-code"><span class="header-section-number">5.2</span> Running Code</h2>
-<p>When you click the <strong>Render</strong> button a document will be generated that includes both content and the output of embedded code. You can embed code like this:</p>
+<section id="model-fitting" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Model Fitting</h1>
+<p>A linear model is constructed according to plan in order to</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Build model to predict xWOBA</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>xwoba_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(xwoba <span class="sc">~</span> bb <span class="sc">+</span> hbp <span class="sc">+</span> x1b <span class="sc">+</span> x2b <span class="sc">+</span> x3b <span class="sc">+</span> hr, <span class="at">data =</span> transform_data)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>transform_data <span class="ot">&lt;-</span> transform_data <span class="sc">|&gt;</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Adds predicted xWOBA to each player. Compares calculated vs predicted values</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">xwoba_model =</span> <span class="fu">fitted</span>(xwoba_model),</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">xwoba_model =</span> <span class="fu">round</span>(xwoba_model, <span class="dv">5</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Filter for players with more plate apperances, less outliers </span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(pa <span class="sc">&gt;=</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-<p>You can add options to executable code like this</p>
+</section>
+<section id="duckdb-storage" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> DuckDB Storage</h1>
+<p>The next step focuses on storing the data into DuckDB to use it, as an effort to satisfy the deliverable requirement (<span class="citation" data-cites="duckdb"><span>“Duck DB”</span> (<a href="#ref-duckdb" role="doc-biblioref">n.d.</a>)</span>).</p>
 <div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 4</code></pre>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Stores data into duckdb</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>db_path <span class="ot">&lt;-</span> <span class="st">"storage.duckdb"</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(duckdb<span class="sc">::</span><span class="fu">duckdb</span>(), <span class="at">dbdir =</span> db_path)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">dbWriteTable</span>(con, <span class="st">"transform_data"</span>, <span class="fu">as.data.frame</span>(transform_data), <span class="at">overwrite =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Retrieve the data from duckdb for use in shiny</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>working_data <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">tbl</span>(con, <span class="st">"transform_data"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-<p>The <code>echo: false</code> option disables the printing of code (only output is displayed).</p>
+<p>The option overwrite is set to true to enable overwrites to the database if changes need to be made. The database is then retrieved as a dataframe to use in visualizations, as visualizations require the data to be in data frame form.</p>
+</section>
+<section id="references" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> References</h1>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-duckdb" class="csl-entry" role="listitem">
+<span>“Duck DB.”</span> n.d. <a href="https://duckdb.org/docs/stable/clients/r.html" class="uri">https://duckdb.org/docs/stable/clients/r.html</a>.
+</div>
+</div>
 </section>
 
 </main> <!-- /main -->

@@ -1,25 +1,64 @@
 ---
 title: "Transform"
 format: html
+execute:
+  eval: false
 ---
 
-## Quarto
+# Transforming Data
 
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
-
-## Running Code
-
-When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+After tidying the data, it is ready to be transformed for use.
 
 ```{r}
-1 + 1
+transform_data <- clean_data |>
+  mutate(
+    # Makes it so that each player is assigned to one team and level only
+    team = str_replace(team, ",.*", ""),
+    level = str_replace(level, ",.*", ""),
+    
+    # Avoids division by 0 for xWOBA calculation
+    xwoba = if_else(
+      (ab + bb + sf + hbp) != 0,
+      (0.689 * (bb - ibb) + 0.72 * hbp + 0.882 * x1b + 1.254 * x2b + 1.59 * x3b + 2.05 * hr) 
+      / (ab + bb + sf + hbp),
+      0),
+    
+    xwoba = round(xwoba, 5),
+    
+    # Change league/level names to make it clearer
+    level = if_else(level == "Maj-NL", "National League", "American League"))
 ```
 
-You can add options to executable code like this
+# Model Fitting
+
+A linear model is constructed according to plan in order to
 
 ```{r}
-#| echo: false
-2 * 2
+# Build model to predict xWOBA
+xwoba_model <- lm(xwoba ~ bb + hbp + x1b + x2b + x3b + hr, data = transform_data)
+
+transform_data <- transform_data |>
+  # Adds predicted xWOBA to each player. Compares calculated vs predicted values
+  mutate(xwoba_model = fitted(xwoba_model),
+         xwoba_model = round(xwoba_model, 5)) |>
+  # Filter for players with more plate apperances, less outliers 
+  filter(pa >= 10)
 ```
 
-The `echo: false` option disables the printing of code (only output is displayed).
+# DuckDB Storage
+
+The next step focuses on storing the data into DuckDB to use it, as an effort to satisfy the deliverable requirement (@duckdb).
+
+```{r}
+# Stores data into duckdb
+db_path <- "storage.duckdb"
+con <- dbConnect(duckdb::duckdb(), dbdir = db_path)
+dbWriteTable(con, "transform_data", as.data.frame(transform_data), overwrite = TRUE)
+
+# Retrieve the data from duckdb for use in shiny
+working_data <- as.data.frame(tbl(con, "transform_data"))
+```
+
+The option overwrite is set to true to enable overwrites to the database if changes need to be made. The database is then retrieved as a dataframe to use in visualizations, as visualizations require the data to be in data frame form.
+
+# References

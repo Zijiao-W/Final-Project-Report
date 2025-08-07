@@ -3,23 +3,14 @@ title: "Question"
 format: html
 ---
 
-## Quarto
+# Question
 
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+The question of interest for this data solution was, "how does one assess a player, specifically, a batter's performance across various games?", and a metric that was chosen, as mentioned in the abstract, is xWOBA.
 
-## Running Code
+# Relevance of xWOBA
 
-When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+xWOBA is relevant to player evaluation and performance because it is a metric that covers many sub-metrics. For example, it includes in the calculation exit velocity, launch angle, and sprint speed (@xwoba). These are all key measurements to determining how well a player performs on the field. As a metric that aggregates all these things together, xWOBA manages to measure many things at once.
 
-```{r}
-1 + 1
-```
+The other metric considered for this data solution was WOBA, which is the weighted on-base average. At the end, it was not chosen because WOBA includes defense in the calculation, but hitters and pitchers have no control over what happens to a batted ball, as described in @xwoba.
 
-You can add options to executable code like this
-
-```{r}
-#| echo: false
-2 * 2
-```
-
-The `echo: false` option disables the printing of code (only output is displayed).
+# References

@@ -4,17 +4,27 @@
     "href": "index.html",
     "title": "Final Project Report",
     "section": "",
-    "text": "1 Abstract\nThere “Creating a Book” (n.d.)\n\n\n2 References\n\n\n\n\n“Creating a Book.” n.d. https://quarto.org/docs/books/.",
+    "text": "1 Abstract",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Index</span>"
     ]
   },
   {
-    "objectID": "index.html#references",
-    "href": "index.html#references",
+    "objectID": "index.html#data-set",
+    "href": "index.html#data-set",
     "title": "Final Project Report",
-    "section": "0.2 References",
-    "text": "0.2 References",
+    "section": "1.1 Data Set",
+    "text": "1.1 Data Set\nThe data set used in this data solution, baseballr, is sourced entirely from “Baseballr Data” (n.d.), and the Quarto book is made with the help of “Creating a Book” (n.d.).\nTo provide a brief introduction for the data set - baseballr is a R package that is created for baseball analytics, it includes many functionalities for calculating baseball metrics, scrapping data from baseball websites, and so on. For the purposes of this data solution, the only function that is used from this package is bref_daily_batter(), which scrapes batter performance data over a certain period of time for players in the American and National League. The rationale behind it and what it entails will be elaborated on in the Import section of the book.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Index</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#significance-of-the-data-solution",
+    "href": "index.html#significance-of-the-data-solution",
+    "title": "Final Project Report",
+    "section": "1.2 Significance of the Data Solution",
+    "text": "1.2 Significance of the Data Solution\nThe topic that I have chosen for the data solution is “player evaluation”, and specifically xwOBA (expected weight on-base average), and will be referred to as xWOBA from this point on. The reason why the project only focuses on a specific metric is to narrow down the scope in order to achieve more granular results and to analyze the players accurately, instead of looking at many metrics at once, which may appear more overwhelming.\nxWOBA is a metric that defines a player’s offense, formulated by exit velocity, launch angle, and sprint speed (“Expected wOBA” (n.d.)), and it is in many ways indicative of a player’s skill, because how well a player performs is largely dependent on how fast they can launch the ball and the angle that it is hit from. It can even be considered the most important metric for batters. As such, xWOBA is a revealing metric that is highly relevant to player evaluation. Figure 1.1 gives some context as to how xWOBA is measured.\n\nFigure 1.1: xWOBA ratings, “xwOBA Rule of Thumb” (n.d.)\nThe audience for this data solution is also defined from the beginning: the intended user is a stakeholder for the MLB (Major League Baseball) that are concerned with how players perform and would like to view it in a quantitative way.\nAs well, this project satisfies the requirements of technical contribution by the use of effective tidyverse commands, interactive shiny modules, adherence to dev ops principles, and being aware of data constraints. All of this will be demonstrated in detail in later chapters of the book.",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Index</span>"
     ]
@@ -24,17 +34,7 @@
     "href": "Question.html",
     "title": "2  Question",
     "section": "",
-    "text": "2.1 Quarto\nQuarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org.",
-    "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Question</span>"
-    ]
-  },
-  {
-    "objectID": "Question.html#running-code",
-    "href": "Question.html#running-code",
-    "title": "2  Question",
-    "section": "2.2 Running Code",
-    "text": "2.2 Running Code\nWhen you click the Render button a document will be generated that includes both content and the output of embedded code. You can embed code like this:\n\n1 + 1\n\n[1] 2\n\n\nYou can add options to executable code like this\n\n\n[1] 4\n\n\nThe echo: false option disables the printing of code (only output is displayed).",
+    "text": "3 Question\nThe question of interest for this data solution was, “how does one assess a player, specifically, a batter’s performance across various games?”, and a metric that was chosen, as mentioned in the abstract, is xWOBA.\n\n\n4 Relevance of xWOBA\nxWOBA is relevant to player evaluation and performance because it is a metric that covers many sub-metrics. For example, it includes in the calculation exit velocity, launch angle, and sprint speed (“Expected wOBA” (n.d.)). These are all key measurements to determining how well a player performs on the field. As a metric that aggregates all these things together, xWOBA manages to measure many things at once.\nThe other metric considered for this data solution was WOBA, which is the weighted on-base average. At the end, it was not chosen because WOBA includes defense in the calculation, but hitters and pitchers have no control over what happens to a batted ball, as described in “Expected wOBA” (n.d.).\n\n\n5 References\n\n\n\n\n“Expected wOBA.” n.d. https://www.mlb.com/glossary/statcast/expected-woba.",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Question</span>"
     ]
@@ -44,17 +44,7 @@
     "href": "Import.html",
     "title": "3  Import",
     "section": "",
-    "text": "3.1 Quarto\nQuarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org.",
-    "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Import</span>"
-    ]
-  },
-  {
-    "objectID": "Import.html#running-code",
-    "href": "Import.html#running-code",
-    "title": "3  Import",
-    "section": "3.2 Running Code",
-    "text": "3.2 Running Code\nWhen you click the Render button a document will be generated that includes both content and the output of embedded code. You can embed code like this:\n\n1 + 1\n\n[1] 2\n\n\nYou can add options to executable code like this\n\n\n[1] 4\n\n\nThe echo: false option disables the printing of code (only output is displayed).",
+    "text": "4 Import\nAs described in the Abstract of the index, the data set used in this project is baseballr, “Baseballr Data” (n.d.), which consists of many functionalities. For this data solution in particular, the only imported data is\n\nlibrary(baseballr)\n\nmain_data &lt;- bref_daily_batter(\"2024-01-01\", \"2025-07-01\")\n\nThe first important thing to note is that the data is from January 2024 to July of 2025. This is to make sure that the data is up to date as much as possible for stakeholders to make the right decisions. Outdated data are not as important, because player performance can vary between seasons, due to aging, the environment that they are playing in, and so on. It also narrows down the scope of the data as to make it easier to work with.\nAs to why this data set is chosen - it is because this data set contains the exact parameters needed to calculate xWOBA, along with other information such as player name, age, and team. As seen in Figure 3.1, the data set contains a lot of columns. For the sake of accessibility, the columns not involved in the calculation of xWOBA will not be explained. The columns that are involved will be explained in later chapters. For now, this is just a preview of the data.\n\nFigure 3.1, processed from “Baseballr Data” (n.d.)\nThis data solution also assumes that the stakeholders have a working knowledge of xWOBA - this is evident since anyone who is concerned with player performance would at least know about the metric. More specific things such as what each xWOBA value entails was given in Figure 1.1.\n\n\n5 References\n\n\n\n\n“Baseballr Data.” n.d. https://billpetti.github.io/baseballr/index.html.",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Import</span>"
     ]
@@ -64,17 +54,7 @@
     "href": "Tidy.html",
     "title": "4  Tidy",
     "section": "",
-    "text": "4.1 Quarto\nQuarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org.",
-    "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Tidy</span>"
-    ]
-  },
-  {
-    "objectID": "Tidy.html#running-code",
-    "href": "Tidy.html#running-code",
-    "title": "4  Tidy",
-    "section": "4.2 Running Code",
-    "text": "4.2 Running Code\nWhen you click the Render button a document will be generated that includes both content and the output of embedded code. You can embed code like this:\n\n1 + 1\n\n[1] 2\n\n\nYou can add options to executable code like this\n\n\n[1] 4\n\n\nThe echo: false option disables the printing of code (only output is displayed).",
+    "text": "5 Tidying Data\nTidying data involves the use of “R for Data Science” (n.d.), which will be used throughout the entire data solution. The book and its methods are cited here once, but not in other chapters. It is accepted as default that tidyverse functions are used throughout.\nThe process of tidying up data is quite straightforward. Referring to Figure 3.1, every null value is replaced with a 0, to make sure that future calculations can be done without error, and column names are made so that it is in lower case only. Other than that, the data set is tidy by tidyverse standards.\n\n# Fills NULL values with 0, and make all column names lowercase\nclean_data &lt;- main_data |&gt;\n  mutate(across(everything(), ~ replace_na(., 0))) |&gt;\n  janitor::clean_names()\n\n\n\n6 References\n\n\n\n\n“R for Data Science.” n.d. https://r4ds.hadley.nz/.",
     "crumbs": [
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Tidy</span>"
     ]
@@ -84,17 +64,7 @@
     "href": "Transform.html",
     "title": "5  Transform",
     "section": "",
-    "text": "5.1 Quarto\nQuarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org.",
-    "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Transform</span>"
-    ]
-  },
-  {
-    "objectID": "Transform.html#running-code",
-    "href": "Transform.html#running-code",
-    "title": "5  Transform",
-    "section": "5.2 Running Code",
-    "text": "5.2 Running Code\nWhen you click the Render button a document will be generated that includes both content and the output of embedded code. You can embed code like this:\n\n1 + 1\n\n[1] 2\n\n\nYou can add options to executable code like this\n\n\n[1] 4\n\n\nThe echo: false option disables the printing of code (only output is displayed).",
+    "text": "6 Transforming Data\nAfter tidying the data, it is ready to be transformed for use.\n\ntransform_data &lt;- clean_data |&gt;\n  mutate(\n    # Makes it so that each player is assigned to one team and level only\n    team = str_replace(team, \",.*\", \"\"),\n    level = str_replace(level, \",.*\", \"\"),\n    \n    # Avoids division by 0 for xWOBA calculation\n    xwoba = if_else(\n      (ab + bb + sf + hbp) != 0,\n      (0.689 * (bb - ibb) + 0.72 * hbp + 0.882 * x1b + 1.254 * x2b + 1.59 * x3b + 2.05 * hr) \n      / (ab + bb + sf + hbp),\n      0),\n    \n    xwoba = round(xwoba, 5),\n    \n    # Change league/level names to make it clearer\n    level = if_else(level == \"Maj-NL\", \"National League\", \"American League\"))\n\n\n\n7 Model Fitting\nA linear model is constructed according to plan in order to\n\n# Build model to predict xWOBA\nxwoba_model &lt;- lm(xwoba ~ bb + hbp + x1b + x2b + x3b + hr, data = transform_data)\n\ntransform_data &lt;- transform_data |&gt;\n  # Adds predicted xWOBA to each player. Compares calculated vs predicted values\n  mutate(xwoba_model = fitted(xwoba_model),\n         xwoba_model = round(xwoba_model, 5)) |&gt;\n  # Filter for players with more plate apperances, less outliers \n  filter(pa &gt;= 10)\n\n\n\n8 DuckDB Storage\nThe next step focuses on storing the data into DuckDB to use it, as an effort to satisfy the deliverable requirement (“Duck DB” (n.d.)).\n\n# Stores data into duckdb\ndb_path &lt;- \"storage.duckdb\"\ncon &lt;- dbConnect(duckdb::duckdb(), dbdir = db_path)\ndbWriteTable(con, \"transform_data\", as.data.frame(transform_data), overwrite = TRUE)\n\n# Retrieve the data from duckdb for use in shiny\nworking_data &lt;- as.data.frame(tbl(con, \"transform_data\"))\n\nThe option overwrite is set to true to enable overwrites to the database if changes need to be made. The database is then retrieved as a dataframe to use in visualizations, as visualizations require the data to be in data frame form.\n\n\n9 References\n\n\n\n\n“Duck DB.” n.d. https://duckdb.org/docs/stable/clients/r.html.",
     "crumbs": [
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Transform</span>"
     ]

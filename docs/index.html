@@ -183,7 +183,11 @@ div.csl-indent {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#abstract" id="toc-abstract" class="nav-link active" data-scroll-target="#abstract"><span class="header-section-number">1</span> Abstract</a></li>
+  <li><a href="#abstract" id="toc-abstract" class="nav-link active" data-scroll-target="#abstract"><span class="header-section-number">1</span> Abstract</a>
+  <ul class="collapse">
+  <li><a href="#data-set" id="toc-data-set" class="nav-link" data-scroll-target="#data-set"><span class="header-section-number">1.1</span> Data Set</a></li>
+  <li><a href="#significance-of-the-data-solution" id="toc-significance-of-the-data-solution" class="nav-link" data-scroll-target="#significance-of-the-data-solution"><span class="header-section-number">1.2</span> Significance of the Data Solution</a></li>
+  </ul></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">2</span> References</a></li>
   </ul>
 </nav>
@@ -212,15 +216,37 @@ div.csl-indent {
 
 <section id="abstract" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> Abstract</h1>
-<p>There <span class="citation" data-cites="quartobook"><span>“Creating a Book”</span> (<a href="#ref-quartobook" role="doc-biblioref">n.d.</a>)</span></p>
+<section id="data-set" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="data-set"><span class="header-section-number">1.1</span> Data Set</h2>
+<p>The data set used in this data solution, baseballr, is sourced entirely from <span class="citation" data-cites="rawdata"><span>“Baseballr Data”</span> (<a href="#ref-rawdata" role="doc-biblioref">n.d.</a>)</span>, and the Quarto book is made with the help of <span class="citation" data-cites="quartobook"><span>“Creating a Book”</span> (<a href="#ref-quartobook" role="doc-biblioref">n.d.</a>)</span>.</p>
+<p>To provide a brief introduction for the data set - baseballr is a R package that is created for baseball analytics, it includes many functionalities for calculating baseball metrics, scrapping data from baseball websites, and so on. For the purposes of this data solution, the only function that is used from this package is bref_daily_batter(), which scrapes batter performance data over a certain period of time for players in the American and National League. The rationale behind it and what it entails will be elaborated on in the Import section of the book.</p>
+</section>
+<section id="significance-of-the-data-solution" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="significance-of-the-data-solution"><span class="header-section-number">1.2</span> Significance of the Data Solution</h2>
+<p>The topic that I have chosen for the data solution is “player evaluation”, and specifically xwOBA (expected weight on-base average), and will be referred to as xWOBA from this point on. The reason why the project only focuses on a specific metric is to narrow down the scope in order to achieve more granular results and to analyze the players accurately, instead of looking at many metrics at once, which may appear more overwhelming.</p>
+<p>xWOBA is a metric that defines a player’s offense, formulated by exit velocity, launch angle, and sprint speed (<span class="citation" data-cites="xwoba"><span>“Expected wOBA”</span> (<a href="#ref-xwoba" role="doc-biblioref">n.d.</a>)</span>), and it is in many ways indicative of a player’s skill, because how well a player performs is largely dependent on how fast they can launch the ball and the angle that it is hit from. It can even be considered the most important metric for batters. As such, xWOBA is a revealing metric that is highly relevant to player evaluation. Figure 1.1 gives some context as to how xWOBA is measured.</p>
+<p><img src="images/clipboard-1470756386.png" class="img-fluid" width="560"></p>
+<p>Figure 1.1: xWOBA ratings, <span class="citation" data-cites="chart"><span>“xwOBA Rule of Thumb”</span> (<a href="#ref-chart" role="doc-biblioref">n.d.</a>)</span></p>
+<p>The audience for this data solution is also defined from the beginning: the intended user is a stakeholder for the MLB (Major League Baseball) that are concerned with how players perform and would like to view it in a quantitative way.</p>
+<p>As well, this project satisfies the requirements of technical contribution by the use of effective tidyverse commands, interactive shiny modules, adherence to dev ops principles, and being aware of data constraints. All of this will be demonstrated in detail in later chapters of the book.</p>
+</section>
 </section>
 <section id="references" class="level1" data-number="2">
 <h1 data-number="2"><span class="header-section-number">2</span> References</h1>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-rawdata" class="csl-entry" role="listitem">
+<span>“Baseballr Data.”</span> n.d. <a href="https://billpetti.github.io/baseballr/index.html" class="uri">https://billpetti.github.io/baseballr/index.html</a>.
+</div>
 <div id="ref-quartobook" class="csl-entry" role="listitem">
 <span>“Creating a Book.”</span> n.d. <a href="https://quarto.org/docs/books/" class="uri">https://quarto.org/docs/books/</a>.
+</div>
+<div id="ref-xwoba" class="csl-entry" role="listitem">
+<span>“Expected wOBA.”</span> n.d. <a href="https://www.mlb.com/glossary/statcast/expected-woba" class="uri">https://www.mlb.com/glossary/statcast/expected-woba</a>.
+</div>
+<div id="ref-chart" class="csl-entry" role="listitem">
+<span>“xwOBA Rule of Thumb.”</span> n.d. <a href="https://library.fangraphs.com/offense/woba/" class="uri">https://library.fangraphs.com/offense/woba/</a>.
 </div>
 </div>
 </section>

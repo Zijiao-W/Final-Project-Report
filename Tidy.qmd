@@ -1,25 +1,21 @@
 ---
 title: "Tidy"
 format: html
+execute:
+  eval: false
 ---
 
-## Quarto
+# Tidying Data
 
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+Tidying data involves the use of @tidyverse, which will be used throughout the entire data solution. The book and its methods are cited here once, but not in other chapters. It is accepted as default that tidyverse functions are used throughout.
 
-## Running Code
-
-When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+The process of tidying up data is quite straightforward. Referring to Figure 3.1, every null value is replaced with a 0, to make sure that future calculations can be done without error, and column names are made so that it is in lower case only. Other than that, the data set is tidy by tidyverse standards.
 
 ```{r}
-1 + 1
+# Fills NULL values with 0, and make all column names lowercase
+clean_data <- main_data |>
+  mutate(across(everything(), ~ replace_na(., 0))) |>
+  janitor::clean_names()
 ```
 
-You can add options to executable code like this
-
-```{r}
-#| echo: false
-2 * 2
-```
-
-The `echo: false` option disables the printing of code (only output is displayed).
+# References

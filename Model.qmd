@@ -1,25 +1,53 @@
 ---
 title: "Model"
 format: html
+execute:
+  eval: false
 ---
 
-## Quarto
+## Model Choice
 
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
-
-## Running Code
-
-When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+As mentioned in previous chapters, a linear model was chosen for xWOBA. The rationale behind the use of a linear model is that it is sufficiently simple, easy to implement, and versatile for many scenarios, which is relevant for technical requirements of this data solution.
 
 ```{r}
-1 + 1
+xwoba_model <- lm(xwoba ~ bb + hbp + x1b + x2b + x3b + hr, data = transform_data)
 ```
 
-You can add options to executable code like this
+As well, the model would be relevant for the audience of the data solution itself, which was discussed in the Visualize chapter.
+
+## Model Fit
+
+Before settling on the model, it is important to assess model fit. This is done by looking at the summary statistics.
+
+![](images/clipboard-2346113343.png){width="534"}
+
+Figure 6.1, Linear Model Fit
+
+As seen in Figure 6.1, there is evidence against the linear model being very effective. For example, none of the factors have a p value that is siginificant enough to explain the response, which is xWOBA. We also see that the $R^2$ value is 0.26, meaning that 26% of the variation in the response can be explained by the model. This means that the model is not very strong.
+
+As well, Figure 5.3, which compares the predicted and calculated xWOBA, also demonstrates that the model is not the most fitting. In that figure, we see a lot of values clustered at the bottom of the chart, and that the scatter plot is not in the general form of a straight line, which it should be if the model is perfect.
+
+This prompts for an alternative model. Even though the linear model should not be ruled out completely, this demonstrates that it is not a very good fit.
 
 ```{r}
-#| echo: false
-2 * 2
+xwoba_2 <- glm(xwoba ~ bb + hbp + x1b + x2b + x3b + hr, data = transform_data, 
+                      family = gaussian(link = "identity"))
+
+summary(xwoba_2)
 ```
 
-The `echo: false` option disables the printing of code (only output is displayed).
+Using knowledge from Stat 431, a Gaussian GLM with the identity link was used to test it out.
+
+![](images/clipboard-1314159435.png){width="511"}
+
+Figure 6.2, GLM fit
+
+The results are also not the most ideal. The p values for each of the parameters is large enough to indicate that there is strong evidence against them being explanatory variates. The algorithm also took 2 iterations to converge, which is relatively short. As well, the null and residual deviance are relatively low, along with a very low AIC value.
+
+This indicates that both the linear model and the GLM are somewhat adequate, but not the best model for xWOBA.
+
+Another potential model to use would be KNN (K Nearest Neighbours) @modelling. However, the implementation details and requirements are behind the scope of my ability, which means it was not used in this data solution. For the sake of versatility and simplicity, I adopted the linear model as the final choice for the data solution.
+
+The code for these model fit tests can be found in the "Final Project Test Environment.R" file in the GitHub repository of the source code for the shiny app.
+
+## References

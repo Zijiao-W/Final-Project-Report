@@ -4,27 +4,27 @@
     "href": "index.html",
     "title": "Final Project Report",
     "section": "",
-    "text": "1 Abstract",
+    "text": "0.1 Abstract",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Index</span>"
     ]
   },
   {
-    "objectID": "index.html#data-set",
-    "href": "index.html#data-set",
+    "objectID": "index.html#abstract",
+    "href": "index.html#abstract",
     "title": "Final Project Report",
-    "section": "1.1 Data Set",
-    "text": "1.1 Data Set\nThe data set used in this data solution, baseballr, is sourced entirely from “Baseballr Data” (n.d.), and the Quarto book is made with the help of “Creating a Book” (n.d.).\nTo provide a brief introduction for the data set - baseballr is a R package that is created for baseball analytics, it includes many functionalities for calculating baseball metrics, scrapping data from baseball websites, and so on. For the purposes of this data solution, the only function that is used from this package is bref_daily_batter(), which scrapes batter performance data over a certain period of time for players in the American and National League. The rationale behind it and what it entails will be elaborated on in the Import section of the book.",
+    "section": "",
+    "text": "0.1.1 Data Set\nThe data set used in this data solution, baseballr, is sourced entirely from “Baseballr Data” (n.d.), and the Quarto book is made with the help of “Creating a Book” (n.d.).\nTo provide a brief introduction for the data set - baseballr is a R package that is created for baseball analytics, it includes many functionalities for calculating baseball metrics, scrapping data from baseball websites, and so on. For the purposes of this data solution, the only function that is used from this package is bref_daily_batter(), which scrapes batter performance data over a certain period of time for players in the American and National League. The rationale behind it and what it entails will be elaborated on in the Import section of the book.\n\n\n0.1.2 Significance of the Data Solution\nThe topic that I have chosen for the data solution is “player evaluation”, and specifically xwOBA (expected weight on-base average), and will be referred to as xWOBA from this point on. The reason why the project only focuses on a specific metric is to narrow down the scope in order to achieve more granular results and to analyze the players accurately, instead of looking at many metrics at once, which may appear more overwhelming.\nxWOBA is a metric that defines a player’s offense, formulated by exit velocity, launch angle, and sprint speed (“Expected wOBA” (n.d.)), and it is in many ways indicative of a player’s skill, because how well a player performs is largely dependent on how fast they can launch the ball and the angle that it is hit from. It can even be considered the most important metric for batters. As such, xWOBA is a revealing metric that is highly relevant to player evaluation. Figure 1.1 gives some context as to how xWOBA is measured.\n\nFigure 1.1: xWOBA ratings, “xwOBA Rule of Thumb” (n.d.)\nThe audience for this data solution is also defined from the beginning: the intended user is a stakeholder for the MLB (Major League Baseball) that are concerned with how players perform and would like to view it in a quantitative way.\nAs well, this project satisfies the requirements of technical contribution by the use of effective tidyverse commands, interactive shiny modules, adherence to dev ops principles, and being aware of data constraints. All of this will be demonstrated in detail in later chapters of the book.",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Index</span>"
     ]
   },
   {
-    "objectID": "index.html#significance-of-the-data-solution",
-    "href": "index.html#significance-of-the-data-solution",
+    "objectID": "index.html#references",
+    "href": "index.html#references",
     "title": "Final Project Report",
-    "section": "1.2 Significance of the Data Solution",
-    "text": "1.2 Significance of the Data Solution\nThe topic that I have chosen for the data solution is “player evaluation”, and specifically xwOBA (expected weight on-base average), and will be referred to as xWOBA from this point on. The reason why the project only focuses on a specific metric is to narrow down the scope in order to achieve more granular results and to analyze the players accurately, instead of looking at many metrics at once, which may appear more overwhelming.\nxWOBA is a metric that defines a player’s offense, formulated by exit velocity, launch angle, and sprint speed (“Expected wOBA” (n.d.)), and it is in many ways indicative of a player’s skill, because how well a player performs is largely dependent on how fast they can launch the ball and the angle that it is hit from. It can even be considered the most important metric for batters. As such, xWOBA is a revealing metric that is highly relevant to player evaluation. Figure 1.1 gives some context as to how xWOBA is measured.\n\nFigure 1.1: xWOBA ratings, “xwOBA Rule of Thumb” (n.d.)\nThe audience for this data solution is also defined from the beginning: the intended user is a stakeholder for the MLB (Major League Baseball) that are concerned with how players perform and would like to view it in a quantitative way.\nAs well, this project satisfies the requirements of technical contribution by the use of effective tidyverse commands, interactive shiny modules, adherence to dev ops principles, and being aware of data constraints. All of this will be demonstrated in detail in later chapters of the book.",
+    "section": "0.2 References",
+    "text": "0.2 References\n\n\n\n\n“Baseballr Data.” n.d. https://billpetti.github.io/baseballr/index.html.\n\n\n“Creating a Book.” n.d. https://quarto.org/docs/books/.\n\n\n“Expected wOBA.” n.d. https://www.mlb.com/glossary/statcast/expected-woba.\n\n\n“xwOBA Rule of Thumb.” n.d. https://library.fangraphs.com/offense/woba/.",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Index</span>"
     ]
@@ -34,7 +34,27 @@
     "href": "Question.html",
     "title": "2  Question",
     "section": "",
-    "text": "3 Question\nThe question of interest for this data solution was, “how does one assess a player, specifically, a batter’s performance across various games?”, and a metric that was chosen, as mentioned in the abstract, is xWOBA.\n\n\n4 Relevance of xWOBA\nxWOBA is relevant to player evaluation and performance because it is a metric that covers many sub-metrics. For example, it includes in the calculation exit velocity, launch angle, and sprint speed (“Expected wOBA” (n.d.)). These are all key measurements to determining how well a player performs on the field. As a metric that aggregates all these things together, xWOBA manages to measure many things at once.\nThe other metric considered for this data solution was WOBA, which is the weighted on-base average. At the end, it was not chosen because WOBA includes defense in the calculation, but hitters and pitchers have no control over what happens to a batted ball, as described in “Expected wOBA” (n.d.).\n\n\n5 References\n\n\n\n\n“Expected wOBA.” n.d. https://www.mlb.com/glossary/statcast/expected-woba.",
+    "text": "2.1 Question\nThe question of interest for this data solution was, “how does one assess a player, specifically, a batter’s performance across various games?”, and a metric that was chosen, as mentioned in the abstract, is xWOBA.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Question</span>"
+    ]
+  },
+  {
+    "objectID": "Question.html#relevance-of-xwoba",
+    "href": "Question.html#relevance-of-xwoba",
+    "title": "2  Question",
+    "section": "2.2 Relevance of xWOBA",
+    "text": "2.2 Relevance of xWOBA\nxWOBA is relevant to player evaluation and performance because it is a metric that covers many sub-metrics. For example, it includes in the calculation exit velocity, launch angle, and sprint speed (“Expected wOBA” (n.d.)). These are all key measurements to determining how well a player performs on the field. As a metric that aggregates all these things together, xWOBA manages to measure many things at once.\nThe other metric considered for this data solution was WOBA, which is the weighted on-base average. At the end, it was not chosen because WOBA includes defense in the calculation, but hitters and pitchers have no control over what happens to a batted ball, as described in “Expected wOBA” (n.d.).",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Question</span>"
+    ]
+  },
+  {
+    "objectID": "Question.html#references",
+    "href": "Question.html#references",
+    "title": "2  Question",
+    "section": "2.3 References",
+    "text": "2.3 References\n\n\n\n\n“Expected wOBA.” n.d. https://www.mlb.com/glossary/statcast/expected-woba.",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Question</span>"
     ]
@@ -44,7 +64,17 @@
     "href": "Import.html",
     "title": "3  Import",
     "section": "",
-    "text": "4 Import\nAs described in the Abstract of the index, the data set used in this project is baseballr, “Baseballr Data” (n.d.), which consists of many functionalities. For this data solution in particular, the only imported data is\n\nlibrary(baseballr)\n\nmain_data &lt;- bref_daily_batter(\"2024-01-01\", \"2025-07-01\")\n\nThe first important thing to note is that the data is from January 2024 to July of 2025. This is to make sure that the data is up to date as much as possible for stakeholders to make the right decisions. Outdated data are not as important, because player performance can vary between seasons, due to aging, the environment that they are playing in, and so on. It also narrows down the scope of the data as to make it easier to work with.\nAs to why this data set is chosen - it is because this data set contains the exact parameters needed to calculate xWOBA, along with other information such as player name, age, and team. As seen in Figure 3.1, the data set contains a lot of columns. For the sake of accessibility, the columns not involved in the calculation of xWOBA will not be explained. The columns that are involved will be explained in later chapters. For now, this is just a preview of the data.\n\nFigure 3.1, processed from “Baseballr Data” (n.d.)\nThis data solution also assumes that the stakeholders have a working knowledge of xWOBA - this is evident since anyone who is concerned with player performance would at least know about the metric. More specific things such as what each xWOBA value entails was given in Figure 1.1.\n\n\n5 References\n\n\n\n\n“Baseballr Data.” n.d. https://billpetti.github.io/baseballr/index.html.",
+    "text": "3.1 Import\nAs described in the Abstract of the index, the data set used in this project is baseballr, “Baseballr Data” (n.d.), which consists of many functionalities. For this data solution in particular, the only imported data is\nlibrary(baseballr)\n\nmain_data &lt;- bref_daily_batter(\"2024-01-01\", \"2025-07-01\")\nThe first important thing to note is that the data is from January 2024 to July of 2025. This is to make sure that the data is up to date as much as possible for stakeholders to make the right decisions. Outdated data are not as important, because player performance can vary between seasons, due to aging, the environment that they are playing in, and so on. It also narrows down the scope of the data as to make it easier to work with.\nAs to why this data set is chosen - it is because this data set contains the exact parameters needed to calculate xWOBA, along with other information such as player name, age, and team. As seen in Figure 3.1, the data set contains a lot of columns. For the sake of accessibility, the columns not involved in the calculation of xWOBA will not be explained. The columns that are involved will be explained in later chapters. For now, this is just a preview of the data.\nFigure 3.1, processed from “Baseballr Data” (n.d.)\nThis data solution also assumes that the stakeholders have a working knowledge of xWOBA - this is evident since anyone who is concerned with player performance would at least know about the metric. More specific things such as what each xWOBA value entails was given in Figure 1.1.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Import</span>"
+    ]
+  },
+  {
+    "objectID": "Import.html#references",
+    "href": "Import.html#references",
+    "title": "3  Import",
+    "section": "3.2 References",
+    "text": "3.2 References\n\n\n\n\n“Baseballr Data.” n.d. https://billpetti.github.io/baseballr/index.html.",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Import</span>"
     ]
@@ -54,7 +84,17 @@
     "href": "Tidy.html",
     "title": "4  Tidy",
     "section": "",
-    "text": "5 Tidying Data\nTidying data involves the use of “R for Data Science” (n.d.), which will be used throughout the entire data solution. The book and its methods are cited here once, but not in other chapters. It is accepted as default that tidyverse functions are used throughout.\nThe process of tidying up data is quite straightforward. Referring to Figure 3.1, every null value is replaced with a 0, to make sure that future calculations can be done without error, and column names are made so that it is in lower case only. Other than that, the data set is tidy by tidyverse standards.\n\n# Fills NULL values with 0, and make all column names lowercase\nclean_data &lt;- main_data |&gt;\n  mutate(across(everything(), ~ replace_na(., 0))) |&gt;\n  janitor::clean_names()\n\n\n\n6 References\n\n\n\n\n“R for Data Science.” n.d. https://r4ds.hadley.nz/.",
+    "text": "4.1 Tidying Data\nTidying data involves the use of “R for Data Science” (n.d.), which will be used throughout the entire data solution. The book and its methods are cited here once, but not in other chapters. It is accepted as default that tidyverse functions are used throughout.\nThe process of tidying up data is quite straightforward. Referring to Figure 3.1, every null value is replaced with a 0, to make sure that future calculations can be done without error, and column names are made so that it is in lower case only. Other than that, the data set is tidy by tidyverse standards.\n# Fills NULL values with 0, and make all column names lowercase\nclean_data &lt;- main_data |&gt;\n  mutate(across(everything(), ~ replace_na(., 0))) |&gt;\n  janitor::clean_names()",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Tidy</span>"
+    ]
+  },
+  {
+    "objectID": "Tidy.html#references",
+    "href": "Tidy.html#references",
+    "title": "4  Tidy",
+    "section": "4.2 References",
+    "text": "4.2 References\n\n\n\n\n“R for Data Science.” n.d. https://r4ds.hadley.nz/.",
     "crumbs": [
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Tidy</span>"
     ]
@@ -64,7 +104,47 @@
     "href": "Transform.html",
     "title": "5  Transform",
     "section": "",
-    "text": "6 Transforming Data\nAfter tidying the data, it is ready to be transformed for use.\n\ntransform_data &lt;- clean_data |&gt;\n  mutate(\n    # Makes it so that each player is assigned to one team and level only\n    team = str_replace(team, \",.*\", \"\"),\n    level = str_replace(level, \",.*\", \"\"),\n    \n    # Avoids division by 0 for xWOBA calculation\n    xwoba = if_else(\n      (ab + bb + sf + hbp) != 0,\n      (0.689 * (bb - ibb) + 0.72 * hbp + 0.882 * x1b + 1.254 * x2b + 1.59 * x3b + 2.05 * hr) \n      / (ab + bb + sf + hbp),\n      0),\n    \n    xwoba = round(xwoba, 5),\n    \n    # Change league/level names to make it clearer\n    level = if_else(level == \"Maj-NL\", \"National League\", \"American League\"))\n\n\n\n7 Model Fitting\nA linear model is constructed according to plan in order to\n\n# Build model to predict xWOBA\nxwoba_model &lt;- lm(xwoba ~ bb + hbp + x1b + x2b + x3b + hr, data = transform_data)\n\ntransform_data &lt;- transform_data |&gt;\n  # Adds predicted xWOBA to each player. Compares calculated vs predicted values\n  mutate(xwoba_model = fitted(xwoba_model),\n         xwoba_model = round(xwoba_model, 5)) |&gt;\n  # Filter for players with more plate apperances, less outliers \n  filter(pa &gt;= 10)\n\n\n\n8 DuckDB Storage\nThe next step focuses on storing the data into DuckDB to use it, as an effort to satisfy the deliverable requirement (“Duck DB” (n.d.)).\n\n# Stores data into duckdb\ndb_path &lt;- \"storage.duckdb\"\ncon &lt;- dbConnect(duckdb::duckdb(), dbdir = db_path)\ndbWriteTable(con, \"transform_data\", as.data.frame(transform_data), overwrite = TRUE)\n\n# Retrieve the data from duckdb for use in shiny\nworking_data &lt;- as.data.frame(tbl(con, \"transform_data\"))\n\nThe option overwrite is set to true to enable overwrites to the database if changes need to be made. The database is then retrieved as a dataframe to use in visualizations, as visualizations require the data to be in data frame form.\n\n\n9 References\n\n\n\n\n“Duck DB.” n.d. https://duckdb.org/docs/stable/clients/r.html.",
+    "text": "5.1 Transforming Data\nAfter tidying the data, it is ready to be transformed for use.\ntransform_data &lt;- clean_data |&gt;\n  mutate(\n    # Makes it so that each player is assigned to one team and level only\n    team = str_replace(team, \",.*\", \"\"),\n    level = str_replace(level, \",.*\", \"\"),\n    \n    # Avoids division by 0 for xWOBA calculation\n    xwoba = if_else(\n      (ab + bb + sf + hbp) != 0,\n      (0.689 * (bb - ibb) + 0.72 * hbp + 0.882 * x1b + 1.254 * x2b + 1.59 * x3b + 2.05 * hr) \n      / (ab + bb + sf + hbp),\n      0),\n    \n    xwoba = round(xwoba, 5),\n    \n    # Change league/level names to make it clearer\n    level = if_else(level == \"Maj-NL\", \"National League\", \"American League\"))\nThe intention of making each player assigned to one team and level (league) only is because it makes it easier to work with in the visualize step.\nAfter that, xWOBA as a formula is directly calculated. The formula is taken from the MLB website,\n“All hit types are valued in the same fashion for xwOBA as they are in the formula for standard wOBA: (unintentional BB factor x unintentional BB + HBP factor x HBP + 1B factor x 1B + 2B factor x 2B + 3B factor x 3B + HR factor x HR)/(AB + unintentional BB + SF + HBP), where”factor” indicates the adjusted run expectancy of a batting event in the context of the season as a whole.”\nThe terminology used here is highly technical, so each term will be elaborated upon here.\nFor more information regarding the terminology and how xWOBA is calculated, refer to “Expected wOBA” (n.d.) and the MLB glossary in general.\nIt was mentioned in the definition that there are factors multiplied against each value. This factor changes every year and is determined individually. The factors are found on “Factors for xWOBA” (n.d.), and the values are entered manually.\nTable 4.1, xWOBA factors\nThe calculated xWOBA is also rounded to 5 digits to make it more accessible.\nAt the end, the level column will now display “American League” or “National League” so it becomes clearer what it represents. All these changes can be seen in Figure 4.2.\nFigure 4.2, Transformed data",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Transform</span>"
+    ]
+  },
+  {
+    "objectID": "Transform.html#transforming-data",
+    "href": "Transform.html#transforming-data",
+    "title": "5  Transform",
+    "section": "",
+    "text": "Unintentional BB: this is an unintentional base on balls that occurs when a pitcher throws four balls outside the strike zone, without the intention of giving the batter a free pass. It is calculated via \\(BB - IBB\\), which are base on balls and intentional walk respectively\n\nIBB: intentional walk. Occurs when the defending team chooses to walk a batter on purpose\n\nHBP: hit by pitch. This occurs when a batter is struck by the ball without singing at it\n1B: this represents single, which means the batter hits the ball and reaches first base without intervention\n2B: a double, which holds the same idea as 1B, but it is second base instead of first\n3B: a triple, similar to a double, but for third base\nHR: home run. This is when a batter hits a ball and achieves home run without being put out\nAB: an at bat that occurs when the batter reaches base via a hit, error, or a fielder’s choice\nSF: sacrifice fly, which is defined by the batter hitting a flying ball to the outfield or foul territory and allows the runner to score\nOverall, the equation expressed in mathematical terms would look like this: \\(\\frac{a\\cdot BB + b\\cdot HBP + c\\cdot 1B + d\\cdot 2B + e \\cdot 3B + f\\cdot HR}{AB + BB + SF + HBP}\\), where a, b, c, d, e, f are factors for BB, HBP, 1B, 2B, 3B, HR respectively.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Transform</span>"
+    ]
+  },
+  {
+    "objectID": "Transform.html#model-fitting",
+    "href": "Transform.html#model-fitting",
+    "title": "5  Transform",
+    "section": "5.2 Model Fitting",
+    "text": "5.2 Model Fitting\nA linear model is constructed according to plan in order to model xWOBA - the details of its implementation and model fit will be discussed in the Model chapter.\nThe general idea is that the model is built to predict xWOBA, and its values are fitted onto each player in the existing data set in order to compare the fitted vs the calculated xWOBA in the visualization stage.\n\n# Build model to predict xWOBA\nxwoba_model &lt;- lm(xwoba ~ bb + hbp + x1b + x2b + x3b + hr, data = transform_data)\n\ntransform_data &lt;- transform_data |&gt;\n  # Adds predicted xWOBA to each player. Compares calculated vs predicted values\n  mutate(xwoba_model = fitted(xwoba_model),\n         xwoba_model = round(xwoba_model, 5)) |&gt;\n  # Filter for players with more plate apperances, less outliers \n  filter(pa &gt;= 10)",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Transform</span>"
+    ]
+  },
+  {
+    "objectID": "Transform.html#duckdb-storage",
+    "href": "Transform.html#duckdb-storage",
+    "title": "5  Transform",
+    "section": "5.3 DuckDB Storage",
+    "text": "5.3 DuckDB Storage\nThe next step focuses on storing the data into DuckDB for use, as an effort to satisfy the deliverable requirement (“Duck DB” (n.d.)).\n\n# Stores data into duckdb\ndb_path &lt;- \"storage.duckdb\"\ncon &lt;- dbConnect(duckdb::duckdb(), dbdir = db_path)\ndbWriteTable(con, \"transform_data\", as.data.frame(transform_data), overwrite = TRUE)\n\n# Retrieve the data from duckdb for use in shiny\nworking_data &lt;- as.data.frame(tbl(con, \"transform_data\"))\n\nThe option overwrite is set to true to enable overwrites to the database if changes need to be made. The database is then retrieved as a dataframe to use in visualizations, as visualizations require the data to be in data frame form.\nHere it might be observed that some deliverable requirements appear to be missing at this stage. More details will be discussed in the Communication chapter.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Transform</span>"
+    ]
+  },
+  {
+    "objectID": "Transform.html#references",
+    "href": "Transform.html#references",
+    "title": "5  Transform",
+    "section": "5.4 References",
+    "text": "5.4 References\n\n\n\n\n“Duck DB.” n.d. https://duckdb.org/docs/stable/clients/r.html.\n\n\n“Expected wOBA.” n.d. https://www.mlb.com/glossary/statcast/expected-woba.\n\n\n“Factors for xWOBA.” n.d. https://www.fangraphs.com/tools/guts?type=cn&sortcol=&sortdir=&season=2025&teamid=0.",
     "crumbs": [
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Transform</span>"
     ]
@@ -74,17 +154,27 @@
     "href": "Visualize.html",
     "title": "6  Visualize",
     "section": "",
-    "text": "6.1 Quarto\nQuarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org.",
+    "text": "6.1 Visualization",
     "crumbs": [
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Visualize</span>"
     ]
   },
   {
-    "objectID": "Visualize.html#running-code",
-    "href": "Visualize.html#running-code",
+    "objectID": "Visualize.html#visualization",
+    "href": "Visualize.html#visualization",
     "title": "6  Visualize",
-    "section": "6.2 Running Code",
-    "text": "6.2 Running Code\nWhen you click the Render button a document will be generated that includes both content and the output of embedded code. You can embed code like this:\n\n1 + 1\n\n[1] 2\n\n\nYou can add options to executable code like this\n\n\n[1] 4\n\n\nThe echo: false option disables the printing of code (only output is displayed).",
+    "section": "",
+    "text": "6.1.1 Tab 1\nThe first tab serves as an introduction to the data solution, and gives an overview of the players in each league. At the top, there is a table of xWOBA ratings to give a sense of how the value should be interpreted. It is also the same table from Figure 1.1. The players are then divided by league, to list out the top 10 players ranked by xWOBA, with their age included as well. This would be important to the stakeholders as it allows them to assess how well the top players perform, to give context, and to compare these players to the players that they may be interested in.\n\nFigure 5.1, tab 1\n\n  # Top 10 national players for tab 1\n  output$top10_nl &lt;- DT::renderDT({\n    working_data |&gt;\n      filter(level == \"National League\") |&gt;\n      # Not sorting by xwoba because of outliers\n      select(name, age, xwoba) |&gt;\n      head(10)\n  })\n  \n  # Top 10 american players for tab 1\n  output$top10_al &lt;- DT::renderDT({\n    working_data |&gt;\n      filter(level == \"American League\") |&gt;\n      # Not sorting by xwoba because of outliers\n      select(name, age, xwoba) |&gt;\n      head(10)\n  })\n\nThe implementation method is borrowed from “Data Table” (n.d.) as a part of the shiny gallery website. As noted here, xWOBA is not sorted because there are outliers with xWOBA &gt; 0.5, way more competitive than the top players, due to their plate appearance being very low, meaning that they only appeared on the field once or twice.\n\n\n6.1.2 Tab 2\nThe second tab sorts median xWOBA by team. Multiple teams can be selected and even bookmarked for future use, since there are many listed teams. The chart comes with labels that help to identify each team, so that stakeholders can effectively see which team performs the best in terms of xWOBA. This helps with decision making, and will determine how well a team will fare against another in a broad sense.\n\nFigure 5.2, tab 2\n\n  # Reactive select teams for tab 2\n  teams_2 &lt;- reactive({\n    req(input$teams)\n    working_data |&gt;\n      filter(team %in% input$teams)\n  })\n  \n  # Bar plot of median xWOBA for tab 2\n  output$median_xwoba &lt;- renderPlot({\n    median_calc &lt;- teams_2() |&gt;\n      group_by(team) |&gt;\n      # Calculates median for each team\n      summarize(median_xwoba = median(xwoba))\n    \n    ggplot(median_calc, aes(x = team, y = median_xwoba, fill = team)) +\n      geom_col() + coord_flip() + theme_classic() + \n      labs(x = \"Team\", y = \"Median xWOBA\", title = \"Median xWOBA by Team\")\n  })\n\nThe median is calculated instead of the mean since it is a more robust statistic. As well, the chart displays the horizontal bar plot to avoid clutter.\nThe bookmarking function is discovered in “Bookmarking” (n.d.), which is displayed on the shiny gallery website.\n\n\n6.1.3 Tab 3\nThis tab compares calculated xWOBA to the predicted xWOBA, which was constructed via the linear model. The model fit and appropriateness will be discussed on the upcoming Model chapter.\n\nFigure 5.3, tab 3\nA linear prediction with the confidence interval was also included as to gauge how similar the predicted and calculated values are for xWOBA. For stakeholders, the predicted xWOBA can be useful as a model to predict xWOBA for varying types of players. It is also a part of the technical requirement of the data solution.\n\n  # Scatter plot of calculated xWOBA vs model on tab 3\n  output$scatter_compare &lt;- renderPlot({\n    ggplot(working_data, aes(x = xwoba, y = xwoba_model)) +\n      geom_point() +\n      geom_smooth(method = \"lm\") + theme_bw() +\n      labs(\n        x = \"Calculated xWOBA\",\n        y = \"Predicted xWOBA\",\n        title = \"Calculated vs Predicted xwOBA\"\n      )\n  })\n\nThe implementation of tab 3 was straightforward.\n\n\n6.1.4 Tab 4\nThe fourth tab is similar to the second tab - this tab focuses on building a histogram that aggregates data to form a distribution of xWOBA for individual teams, as well as for multiple teams at once. It also comes with a bookmark function that stores the input if needed. This is relevant for stakeholders because they can access xWOBA for every team, meaning that they will be able to effectively determine the skill distribution of all team members, as well as the general skill distribution for every team. This allows them to identify weak points and strengths, with the potential to allocate resources to train players with the smallest xWOBA and to reinforce the stronger players as well.\n\nFigure 5.4, tab 4\n\n  # Reactive select teams for tab 4\n  teams_4 &lt;- reactive({\n    req(input$teams)\n    working_data |&gt;\n      filter(team %in% input$teams)\n  })\n  \n  # histogram of xwOBA in teams for tab 4\n  output$xwoba_hist &lt;- renderPlot({\n    ggplot(teams_4(), aes(x = xwoba)) +\n      geom_histogram(bins = 10) +\n      labs(x = \"xWOBA\", y = \"Count\", title = \"xWOBA Distribution by Team\") +\n      theme_minimal()\n  })\n\nThe implementation of tab 4 also uses the bookmark function, and was similar overall to tab 2.\n\n\n6.1.5 Tab 5\nThe last tab is simply a table with all players, complete with the search function and bookmarking. It also offers options for interactivity, and one can change the option of how many entries to display at once, as well as a built in sorting function. For stakeholders, this tab serves to isolate individual players, look at their information, and make decisions as to how to approach problems that they may have, such as how well a player performs, how competitive they would be against others, and so on. This is especially useful for searching up players that are competing against each other in an actual game.\n\nFigure 5.5, tab 5\n\n  # Table of all players on tab 5\n  output$search_table &lt;- DT::renderDT(\n    DT::datatable(\n      # Selects only a few columns to be more readable\n      working_data |&gt;\n        select(name:team, xwoba, xwoba_model),\n      \n      # Interactivity, number of players displayed\n      options = list(\n        lengthMenu = list(c(5, 15, 30, -1), c('5', '15', '30', 'All')),\n        pageLength = 30\n      )\n    )\n  )\n\nThe code is almost directly taken from “Data Table” (n.d.).",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Visualize</span>"
+    ]
+  },
+  {
+    "objectID": "Visualize.html#references",
+    "href": "Visualize.html#references",
+    "title": "6  Visualize",
+    "section": "6.2 References",
+    "text": "6.2 References\n\n\n\n\n“Bookmarking.” n.d. https://shiny.posit.co/r/gallery/advanced-shiny/bookmarking-url/.\n\n\n“Data Table.” n.d. https://shiny.posit.co/r/gallery/widgets/datatables-options/.",
     "crumbs": [
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Visualize</span>"
     ]
@@ -94,17 +184,27 @@
     "href": "Model.html",
     "title": "7  Model",
     "section": "",
-    "text": "7.1 Quarto\nQuarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org.",
+    "text": "7.1 Model Choice\nAs mentioned in previous chapters, a linear model was chosen for xWOBA. The rationale behind the use of a linear model is that it is sufficiently simple, easy to implement, and versatile for many scenarios, which is relevant for technical requirements of this data solution.\nxwoba_model &lt;- lm(xwoba ~ bb + hbp + x1b + x2b + x3b + hr, data = transform_data)\nAs well, the model would be relevant for the audience of the data solution itself, which was discussed in the Visualize chapter.",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Model</span>"
     ]
   },
   {
-    "objectID": "Model.html#running-code",
-    "href": "Model.html#running-code",
+    "objectID": "Model.html#model-fit",
+    "href": "Model.html#model-fit",
     "title": "7  Model",
-    "section": "7.2 Running Code",
-    "text": "7.2 Running Code\nWhen you click the Render button a document will be generated that includes both content and the output of embedded code. You can embed code like this:\n\n1 + 1\n\n[1] 2\n\n\nYou can add options to executable code like this\n\n\n[1] 4\n\n\nThe echo: false option disables the printing of code (only output is displayed).",
+    "section": "7.2 Model Fit",
+    "text": "7.2 Model Fit\nBefore settling on the model, it is important to assess model fit. This is done by looking at the summary statistics.\n\nFigure 6.1, Linear Model Fit\nAs seen in Figure 6.1, there is evidence against the linear model being very effective. For example, none of the factors have a p value that is siginificant enough to explain the response, which is xWOBA. We also see that the \\(R^2\\) value is 0.26, meaning that 26% of the variation in the response can be explained by the model. This means that the model is not very strong.\nAs well, Figure 5.3, which compares the predicted and calculated xWOBA, also demonstrates that the model is not the most fitting. In that figure, we see a lot of values clustered at the bottom of the chart, and that the scatter plot is not in the general form of a straight line, which it should be if the model is perfect.\nThis prompts for an alternative model. Even though the linear model should not be ruled out completely, this demonstrates that it is not a very good fit.\n\nxwoba_2 &lt;- glm(xwoba ~ bb + hbp + x1b + x2b + x3b + hr, data = transform_data, \n                      family = gaussian(link = \"identity\"))\n\nsummary(xwoba_2)\n\nUsing knowledge from Stat 431, a Gaussian GLM with the identity link was used to test it out.\n\nFigure 6.2, GLM fit\nThe results are also not the most ideal. The p values for each of the parameters is large enough to indicate that there is strong evidence against them being explanatory variates. The algorithm also took 2 iterations to converge, which is relatively short. As well, the null and residual deviance are relatively low, along with a very low AIC value.\nThis indicates that both the linear model and the GLM are somewhat adequate, but not the best model for xWOBA.\nAnother potential model to use would be KNN (K Nearest Neighbours) “Modelling xwOBA” (n.d.). However, the implementation details and requirements are behind the scope of my ability, which means it was not used in this data solution. For the sake of versatility and simplicity, I adopted the linear model as the final choice for the data solution.\nThe code for these model fit tests can be found in the “Final Project Test Environment.R” file in the GitHub repository of the source code for the shiny app.",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Model</span>"
+    ]
+  },
+  {
+    "objectID": "Model.html#references",
+    "href": "Model.html#references",
+    "title": "7  Model",
+    "section": "7.3 References",
+    "text": "7.3 References\n\n\n\n\n“Modelling xwOBA.” n.d. https://medium.com/@thomasjamesnestico/modelling-xwoba-with-knn-9b004e93861a.",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Model</span>"
     ]
@@ -114,17 +214,27 @@
     "href": "Communicate.html",
     "title": "8  Communicate",
     "section": "",
-    "text": "8.1 Quarto\nQuarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org.",
+    "text": "8.1 Communication\nThe plan for this section was to communicate technicalities as well as terminology that needs to be elaborated upon. However, since the previous chapters have already achieved this, I wanted to take this chapter as a space to outline the requirements for this data solution and whether or not they were fulfilled.",
     "crumbs": [
       "<span class='chapter-number'>8</span>  <span class='chapter-title'>Communicate</span>"
     ]
   },
   {
-    "objectID": "Communicate.html#running-code",
-    "href": "Communicate.html#running-code",
+    "objectID": "Communicate.html#communication",
+    "href": "Communicate.html#communication",
     "title": "8  Communicate",
-    "section": "8.2 Running Code",
-    "text": "8.2 Running Code\nWhen you click the Render button a document will be generated that includes both content and the output of embedded code. You can embed code like this:\n\n1 + 1\n\n[1] 2\n\n\nYou can add options to executable code like this\n\n\n[1] 4\n\n\nThe echo: false option disables the printing of code (only output is displayed).",
+    "section": "",
+    "text": "8.1.1 Technical Requirements\n\nApply modeling techniques learned from previous courses, such as (but not limited to) machine learning, computer vision, simulation, optimization, and data visualization\n\nAll requirements here have been satisfied. I have used a linear model and tested a GLM, which makes full use of my knowledge from Stat 331 and Stat 431. As well, the assessment of these models also takes from Stat 231 and Stat 332.\n\nPerform validation, testing, and manual quality assurance before certifying new models and metrics for use, using meta-analytic criteria where possible\n\nThe model used in this data solution was tested, as mentioned in the Model chapter. As for other metrics, they were also independently tested in the files “Final Project Test Environment.R” and “Final Project Shiny.R”. The former covers all steps from import to transform, and the model chapter, while the latter covers the visualization step, which is exclusive to the shiny app. These files are found in the GitHub repository of the source code.\n\nApply correct programming habits such as extensively commented, well-organized, and thoroughly tested code, with version control utilized throughout the project\n\nThe program has been organized to the best of my ability, and everything is commented. Version control is achieved via GitHub. Again, the code was tested through the 2 test environments mentioned above.\n\nWrite a maintainable, performant, and scalable Shiny application, leveraging reactive programming and similar strong software engineering principles\n\nI would argue that the shiny application I have built is scalable, as it has the potential to add in more players, more teams, as well as more seasons to broaden the scope. The data that I have used, as mentioned in the Import chapter, was entirely from the year 2024. As well, the application is performant, and has an interactive interface that is easy to navigate.\n\n\n\n\n8.1.2 Deliverable Requirements\nFor the deliverable requirements, I am aware that much of it has not been implemented. I had attempted to add them into the program, using knowledge from “Dev Ops for Data Science” (n.d.). However, my attempts have not been successful, and given that I had to manage multiple assessments at once, I had decided to not fulfill these requirements.\nWith some introspection, it is revealed that I had perhaps spent too little time looking at the “Dev Ops for Data Science” (n.d.) book. This is because for each assignment based off of this book, I always tend to look at the questions first, and then go to the specific sections with relevant information to answer the questions as fast as possible, while ignoring much of the other parts of the book. If I had spent more time looking through the book, and examined the labs in each chapter, I might have been able to implement the requirements in time.\nThis being said, below is the checklist for the deliverable requirements.\n\nUse a .venv or renv virtual environment with appropriate workflows\n\nThis is achieved through RStudio. The renv folder can be seen in the repository for the source code.\n\nBuild a predictive model, and…(series of requirements)\n\nThis series of requirements was challenging to attempt, and unfortunately I had not been able to fulfill them.\n\nUse requests or httr2 to access predictions from this model from within your shiny web application\n\nThis is based directly off of the previous requirement, and has not been fulfilled.\n\nUse GitHub Actions to deploy your project report to GitHub Pages, scheduled on push and workflow-dispatch\n\nThis has been achieved. Please see “dispatch.yml” in the repository for this book. This was done with the help of “Deploying Sites” (n.d.).\n\nStore all data used in your web application and project report in AWS S3 and interface with it using duckdb\n\nThis requirement was partially complete. This is because I had successfully stored data into duckdb. Details can be seen in the Transform chapter.\n\nProper use of environment variables/secrets management for AWS credentials, EC2 pub- lic IPv4 address, and other relevant information\n\nNot fulfilled.\n\nMultiple levels of logging for user interactions and external API calls within the shiny web application\n\nNot fulfilled.\n\nUser-friendly front-end interface, with straightforward navigation and responsive components\n\nI had intentionally designed the interface of the shiny app to be as user friendly as possible. This was achieved through the use of tabs, bookmarks, labels for various charts, and useful prompts.\n\nIncorporate a variety of data visualizations using ggplot, gt, and optionally plotly\n\nggplot was used extensively in the data solution, and a variety of plots were used, each with a unique configuration and theme. Labels, titles, legends were also included.",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Communicate</span>"
+    ]
+  },
+  {
+    "objectID": "Communicate.html#references",
+    "href": "Communicate.html#references",
+    "title": "8  Communicate",
+    "section": "8.2 References",
+    "text": "8.2 References\n\n\n\n\n“Deploying Sites.” n.d. https://dev.to/davorg/deploying-github-pages-site-with-github-workflows-3bhh.\n\n\n“Dev Ops for Data Science.” n.d. https://do4ds.com/.",
     "crumbs": [
       "<span class='chapter-number'>8</span>  <span class='chapter-title'>Communicate</span>"
     ]

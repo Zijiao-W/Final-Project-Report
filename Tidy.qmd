@@ -5,7 +5,7 @@ execute:
   eval: false
 ---
 
-# Tidying Data
+## Tidying Data
 
 Tidying data involves the use of @tidyverse, which will be used throughout the entire data solution. The book and its methods are cited here once, but not in other chapters. It is accepted as default that tidyverse functions are used throughout.
 
@@ -18,4 +18,4 @@ clean_data <- main_data |>
   janitor::clean_names()
 ```
 
-# References
+## References

@@ -3,15 +3,15 @@ title: "Index"
 format: html
 ---
 
-# Abstract
+## Abstract
 
-## Data Set
+### Data Set
 
 The data set used in this data solution, baseballr, is sourced entirely from @rawdata, and the Quarto book is made with the help of @quartobook.
 
 To provide a brief introduction for the data set - baseballr is a R package that is created for baseball analytics, it includes many functionalities for calculating baseball metrics, scrapping data from baseball websites, and so on. For the purposes of this data solution, the only function that is used from this package is bref_daily_batter(), which scrapes batter performance data over a certain period of time for players in the American and National League. The rationale behind it and what it entails will be elaborated on in the Import section of the book.
 
-## Significance of the Data Solution
+### Significance of the Data Solution
 
 The topic that I have chosen for the data solution is "player evaluation", and specifically xwOBA (expected weight on-base average), and will be referred to as xWOBA from this point on. The reason why the project only focuses on a specific metric is to narrow down the scope in order to achieve more granular results and to analyze the players accurately, instead of looking at many metrics at once, which may appear more overwhelming.
 
@@ -25,4 +25,4 @@ The audience for this data solution is also defined from the beginning: the inte
 
 As well, this project satisfies the requirements of technical contribution by the use of effective tidyverse commands, interactive shiny modules, adherence to dev ops principles, and being aware of data constraints. All of this will be demonstrated in detail in later chapters of the book.
 
-# References
+## References

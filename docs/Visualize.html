@@ -54,7 +54,27 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -198,8 +218,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#quarto" id="toc-quarto" class="nav-link active" data-scroll-target="#quarto"><span class="header-section-number">6.1</span> Quarto</a></li>
-  <li><a href="#running-code" id="toc-running-code" class="nav-link" data-scroll-target="#running-code"><span class="header-section-number">6.2</span> Running Code</a></li>
+  <li><a href="#visualization" id="toc-visualization" class="nav-link active" data-scroll-target="#visualization"><span class="header-section-number">6.1</span> Visualization</a>
+  <ul class="collapse">
+  <li><a href="#tab-1" id="toc-tab-1" class="nav-link" data-scroll-target="#tab-1"><span class="header-section-number">6.1.1</span> Tab 1</a></li>
+  <li><a href="#tab-2" id="toc-tab-2" class="nav-link" data-scroll-target="#tab-2"><span class="header-section-number">6.1.2</span> Tab 2</a></li>
+  <li><a href="#tab-3" id="toc-tab-3" class="nav-link" data-scroll-target="#tab-3"><span class="header-section-number">6.1.3</span> Tab 3</a></li>
+  <li><a href="#tab-4" id="toc-tab-4" class="nav-link" data-scroll-target="#tab-4"><span class="header-section-number">6.1.4</span> Tab 4</a></li>
+  <li><a href="#tab-5" id="toc-tab-5" class="nav-link" data-scroll-target="#tab-5"><span class="header-section-number">6.1.5</span> Tab 5</a></li>
+  </ul></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">6.2</span> References</a></li>
   </ul>
 </nav>
     </div>
@@ -225,28 +252,142 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="quarto" class="level2" data-number="6.1">
-<h2 data-number="6.1" class="anchored" data-anchor-id="quarto"><span class="header-section-number">6.1</span> Quarto</h2>
-<p>Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <a href="https://quarto.org" class="uri">https://quarto.org</a>.</p>
+<section id="visualization" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="visualization"><span class="header-section-number">6.1</span> Visualization</h2>
+<section id="tab-1" class="level3" data-number="6.1.1">
+<h3 data-number="6.1.1" class="anchored" data-anchor-id="tab-1"><span class="header-section-number">6.1.1</span> Tab 1</h3>
+<p>The first tab serves as an introduction to the data solution, and gives an overview of the players in each league. At the top, there is a table of xWOBA ratings to give a sense of how the value should be interpreted. It is also the same table from Figure 1.1. The players are then divided by league, to list out the top 10 players ranked by xWOBA, with their age included as well. This would be important to the stakeholders as it allows them to assess how well the top players perform, to give context, and to compare these players to the players that they may be interested in.</p>
+<p><img src="images/clipboard-4072502574.png" class="img-fluid" width="493"></p>
+<p>Figure 5.1, tab 1</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Top 10 national players for tab 1</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>top10_nl <span class="ot">&lt;-</span> DT<span class="sc">::</span><span class="fu">renderDT</span>({</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    working_data <span class="sc">|&gt;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>      <span class="fu">filter</span>(level <span class="sc">==</span> <span class="st">"National League"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Not sorting by xwoba because of outliers</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>      <span class="fu">select</span>(name, age, xwoba) <span class="sc">|&gt;</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>      <span class="fu">head</span>(<span class="dv">10</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Top 10 american players for tab 1</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>top10_al <span class="ot">&lt;-</span> DT<span class="sc">::</span><span class="fu">renderDT</span>({</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    working_data <span class="sc">|&gt;</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>      <span class="fu">filter</span>(level <span class="sc">==</span> <span class="st">"American League"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Not sorting by xwoba because of outliers</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>      <span class="fu">select</span>(name, age, xwoba) <span class="sc">|&gt;</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>      <span class="fu">head</span>(<span class="dv">10</span>)</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  })</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The implementation method is borrowed from <span class="citation" data-cites="datatable"><span>“Data Table”</span> (<a href="#ref-datatable" role="doc-biblioref">n.d.</a>)</span> as a part of the shiny gallery website. As noted here, xWOBA is not sorted because there are outliers with xWOBA &gt; 0.5, way more competitive than the top players, due to their plate appearance being very low, meaning that they only appeared on the field once or twice.</p>
 </section>
-<section id="running-code" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="running-code"><span class="header-section-number">6.2</span> Running Code</h2>
-<p>When you click the <strong>Render</strong> button a document will be generated that includes both content and the output of embedded code. You can embed code like this:</p>
+<section id="tab-2" class="level3" data-number="6.1.2">
+<h3 data-number="6.1.2" class="anchored" data-anchor-id="tab-2"><span class="header-section-number">6.1.2</span> Tab 2</h3>
+<p>The second tab sorts median xWOBA by team. Multiple teams can be selected and even bookmarked for future use, since there are many listed teams. The chart comes with labels that help to identify each team, so that stakeholders can effectively see which team performs the best in terms of xWOBA. This helps with decision making, and will determine how well a team will fare against another in a broad sense.</p>
+<p><img src="images/clipboard-1940127255.png" class="img-fluid" width="465"></p>
+<p>Figure 5.2, tab 2</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Reactive select teams for tab 2</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  teams_2 <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">req</span>(input<span class="sc">$</span>teams)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    working_data <span class="sc">|&gt;</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>      <span class="fu">filter</span>(team <span class="sc">%in%</span> input<span class="sc">$</span>teams)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Bar plot of median xWOBA for tab 2</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>median_xwoba <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    median_calc <span class="ot">&lt;-</span> <span class="fu">teams_2</span>() <span class="sc">|&gt;</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>      <span class="fu">group_by</span>(team) <span class="sc">|&gt;</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Calculates median for each team</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>      <span class="fu">summarize</span>(<span class="at">median_xwoba =</span> <span class="fu">median</span>(xwoba))</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(median_calc, <span class="fu">aes</span>(<span class="at">x =</span> team, <span class="at">y =</span> median_xwoba, <span class="at">fill =</span> team)) <span class="sc">+</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_col</span>() <span class="sc">+</span> <span class="fu">coord_flip</span>() <span class="sc">+</span> <span class="fu">theme_classic</span>() <span class="sc">+</span> </span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>      <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Team"</span>, <span class="at">y =</span> <span class="st">"Median xWOBA"</span>, <span class="at">title =</span> <span class="st">"Median xWOBA by Team"</span>)</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>  })</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-<p>You can add options to executable code like this</p>
+<p>The median is calculated instead of the mean since it is a more robust statistic. As well, the chart displays the horizontal bar plot to avoid clutter.</p>
+<p>The bookmarking function is discovered in <span class="citation" data-cites="bookmark"><span>“Bookmarking”</span> (<a href="#ref-bookmark" role="doc-biblioref">n.d.</a>)</span>, which is displayed on the shiny gallery website.</p>
+</section>
+<section id="tab-3" class="level3" data-number="6.1.3">
+<h3 data-number="6.1.3" class="anchored" data-anchor-id="tab-3"><span class="header-section-number">6.1.3</span> Tab 3</h3>
+<p>This tab compares calculated xWOBA to the predicted xWOBA, which was constructed via the linear model. The model fit and appropriateness will be discussed on the upcoming Model chapter.</p>
+<p><img src="images/clipboard-1998929532.png" class="img-fluid" width="550"></p>
+<p>Figure 5.3, tab 3</p>
+<p>A linear prediction with the confidence interval was also included as to gauge how similar the predicted and calculated values are for xWOBA. For stakeholders, the predicted xWOBA can be useful as a model to predict xWOBA for varying types of players. It is also a part of the technical requirement of the data solution.</p>
 <div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 4</code></pre>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Scatter plot of calculated xWOBA vs model on tab 3</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>scatter_compare <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(working_data, <span class="fu">aes</span>(<span class="at">x =</span> xwoba, <span class="at">y =</span> xwoba_model)) <span class="sc">+</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>) <span class="sc">+</span> <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>      <span class="fu">labs</span>(</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">x =</span> <span class="st">"Calculated xWOBA"</span>,</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">y =</span> <span class="st">"Predicted xWOBA"</span>,</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">title =</span> <span class="st">"Calculated vs Predicted xwOBA"</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  })</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>The implementation of tab 3 was straightforward.</p>
+</section>
+<section id="tab-4" class="level3" data-number="6.1.4">
+<h3 data-number="6.1.4" class="anchored" data-anchor-id="tab-4"><span class="header-section-number">6.1.4</span> Tab 4</h3>
+<p>The fourth tab is similar to the second tab - this tab focuses on building a histogram that aggregates data to form a distribution of xWOBA for individual teams, as well as for multiple teams at once. It also comes with a bookmark function that stores the input if needed. This is relevant for stakeholders because they can access xWOBA for every team, meaning that they will be able to effectively determine the skill distribution of all team members, as well as the general skill distribution for every team. This allows them to identify weak points and strengths, with the potential to allocate resources to train players with the smallest xWOBA and to reinforce the stronger players as well.</p>
+<p><img src="images/clipboard-3372814112.png" class="img-fluid" width="453"></p>
+<p>Figure 5.4, tab 4</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Reactive select teams for tab 4</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  teams_4 <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">req</span>(input<span class="sc">$</span>teams)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    working_data <span class="sc">|&gt;</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>      <span class="fu">filter</span>(team <span class="sc">%in%</span> input<span class="sc">$</span>teams)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># histogram of xwOBA in teams for tab 4</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>xwoba_hist <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">teams_4</span>(), <span class="fu">aes</span>(<span class="at">x =</span> xwoba)) <span class="sc">+</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">10</span>) <span class="sc">+</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>      <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"xWOBA"</span>, <span class="at">y =</span> <span class="st">"Count"</span>, <span class="at">title =</span> <span class="st">"xWOBA Distribution by Team"</span>) <span class="sc">+</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>      <span class="fu">theme_minimal</span>()</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  })</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>The <code>echo: false</code> option disables the printing of code (only output is displayed).</p>
+<p>The implementation of tab 4 also uses the bookmark function, and was similar overall to tab 2.</p>
+</section>
+<section id="tab-5" class="level3" data-number="6.1.5">
+<h3 data-number="6.1.5" class="anchored" data-anchor-id="tab-5"><span class="header-section-number">6.1.5</span> Tab 5</h3>
+<p>The last tab is simply a table with all players, complete with the search function and bookmarking. It also offers options for interactivity, and one can change the option of how many entries to display at once, as well as a built in sorting function. For stakeholders, this tab serves to isolate individual players, look at their information, and make decisions as to how to approach problems that they may have, such as how well a player performs, how competitive they would be against others, and so on. This is especially useful for searching up players that are competing against each other in an actual game.</p>
+<p><img src="images/clipboard-2277364030.png" class="img-fluid" width="489"></p>
+<p>Figure 5.5, tab 5</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Table of all players on tab 5</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>search_table <span class="ot">&lt;-</span> DT<span class="sc">::</span><span class="fu">renderDT</span>(</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    DT<span class="sc">::</span><span class="fu">datatable</span>(</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Selects only a few columns to be more readable</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>      working_data <span class="sc">|&gt;</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">select</span>(name<span class="sc">:</span>team, xwoba, xwoba_model),</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Interactivity, number of players displayed</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">options =</span> <span class="fu">list</span>(</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">lengthMenu =</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">15</span>, <span class="dv">30</span>, <span class="sc">-</span><span class="dv">1</span>), <span class="fu">c</span>(<span class="st">'5'</span>, <span class="st">'15'</span>, <span class="st">'30'</span>, <span class="st">'All'</span>)),</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">pageLength =</span> <span class="dv">30</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The code is almost directly taken from <span class="citation" data-cites="datatable"><span>“Data Table”</span> (<a href="#ref-datatable" role="doc-biblioref">n.d.</a>)</span>.</p>
+</section>
+</section>
+<section id="references" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="references"><span class="header-section-number">6.2</span> References</h2>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-bookmark" class="csl-entry" role="listitem">
+<span>“Bookmarking.”</span> n.d. <a href="https://shiny.posit.co/r/gallery/advanced-shiny/bookmarking-url/" class="uri">https://shiny.posit.co/r/gallery/advanced-shiny/bookmarking-url/</a>.
+</div>
+<div id="ref-datatable" class="csl-entry" role="listitem">
+<span>“Data Table.”</span> n.d. <a href="https://shiny.posit.co/r/gallery/widgets/datatables-options/" class="uri">https://shiny.posit.co/r/gallery/widgets/datatables-options/</a>.
+</div>
+</div>
 </section>
 
 </main> <!-- /main -->

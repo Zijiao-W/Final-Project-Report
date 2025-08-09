@@ -20,41 +20,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
 }
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
 }
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
 }
-</style>
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -197,8 +183,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#quarto" id="toc-quarto" class="nav-link active" data-scroll-target="#quarto"><span class="header-section-number">8.1</span> Quarto</a></li>
-  <li><a href="#running-code" id="toc-running-code" class="nav-link" data-scroll-target="#running-code"><span class="header-section-number">8.2</span> Running Code</a></li>
+  <li><a href="#communication" id="toc-communication" class="nav-link active" data-scroll-target="#communication"><span class="header-section-number">8.1</span> Communication</a>
+  <ul class="collapse">
+  <li><a href="#technical-requirements" id="toc-technical-requirements" class="nav-link" data-scroll-target="#technical-requirements"><span class="header-section-number">8.1.1</span> Technical Requirements</a></li>
+  <li><a href="#deliverable-requirements" id="toc-deliverable-requirements" class="nav-link" data-scroll-target="#deliverable-requirements"><span class="header-section-number">8.1.2</span> Deliverable Requirements</a></li>
+  </ul></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">8.2</span> References</a></li>
   </ul>
 </nav>
     </div>
@@ -224,28 +214,87 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="quarto" class="level2" data-number="8.1">
-<h2 data-number="8.1" class="anchored" data-anchor-id="quarto"><span class="header-section-number">8.1</span> Quarto</h2>
-<p>Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <a href="https://quarto.org" class="uri">https://quarto.org</a>.</p>
+<section id="communication" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="communication"><span class="header-section-number">8.1</span> Communication</h2>
+<p>The plan for this section was to communicate technicalities as well as terminology that needs to be elaborated upon. However, since the previous chapters have already achieved this, I wanted to take this chapter as a space to outline the requirements for this data solution and whether or not they were fulfilled.</p>
+<section id="technical-requirements" class="level3" data-number="8.1.1">
+<h3 data-number="8.1.1" class="anchored" data-anchor-id="technical-requirements"><span class="header-section-number">8.1.1</span> Technical Requirements</h3>
+<ul>
+<li><p>Apply modeling techniques learned from previous courses, such as (but not limited to) machine learning, computer vision, simulation, optimization, and data visualization</p>
+<ul>
+<li>All requirements here have been satisfied. I have used a linear model and tested a GLM, which makes full use of my knowledge from Stat 331 and Stat 431. As well, the assessment of these models also takes from Stat 231 and Stat 332.</li>
+</ul></li>
+<li><p>Perform validation, testing, and manual quality assurance before certifying new models and metrics for use, using meta-analytic criteria where possible</p>
+<ul>
+<li>The model used in this data solution was tested, as mentioned in the Model chapter. As for other metrics, they were also independently tested in the files “Final Project Test Environment.R” and “Final Project Shiny.R”. The former covers all steps from import to transform, and the model chapter, while the latter covers the visualization step, which is exclusive to the shiny app. These files are found in the GitHub repository of the source code.</li>
+</ul></li>
+<li><p>Apply correct programming habits such as extensively commented, well-organized, and thoroughly tested code, with version control utilized throughout the project</p>
+<ul>
+<li>The program has been organized to the best of my ability, and everything is commented. Version control is achieved via GitHub. Again, the code was tested through the 2 test environments mentioned above.</li>
+</ul></li>
+<li><p>Write a maintainable, performant, and scalable Shiny application, leveraging reactive programming and similar strong software engineering principles</p>
+<ul>
+<li>I would argue that the shiny application I have built is scalable, as it has the potential to add in more players, more teams, as well as more seasons to broaden the scope. The data that I have used, as mentioned in the Import chapter, was entirely from the year 2024. As well, the application is performant, and has an interactive interface that is easy to navigate.</li>
+</ul></li>
+</ul>
 </section>
-<section id="running-code" class="level2" data-number="8.2">
-<h2 data-number="8.2" class="anchored" data-anchor-id="running-code"><span class="header-section-number">8.2</span> Running Code</h2>
-<p>When you click the <strong>Render</strong> button a document will be generated that includes both content and the output of embedded code. You can embed code like this:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
-</div>
-</div>
-<p>You can add options to executable code like this</p>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 4</code></pre>
-</div>
-</div>
-<p>The <code>echo: false</code> option disables the printing of code (only output is displayed).</p>
+<section id="deliverable-requirements" class="level3" data-number="8.1.2">
+<h3 data-number="8.1.2" class="anchored" data-anchor-id="deliverable-requirements"><span class="header-section-number">8.1.2</span> Deliverable Requirements</h3>
+<p>For the deliverable requirements, I am aware that much of it has not been implemented. I had attempted to add them into the program, using knowledge from <span class="citation" data-cites="devops"><span>“Dev Ops for Data Science”</span> (<a href="#ref-devops" role="doc-biblioref">n.d.</a>)</span>. However, my attempts have not been successful, and given that I had to manage multiple assessments at once, I had decided to not fulfill these requirements.</p>
+<p>With some introspection, it is revealed that I had perhaps spent too little time looking at the <span class="citation" data-cites="devops"><span>“Dev Ops for Data Science”</span> (<a href="#ref-devops" role="doc-biblioref">n.d.</a>)</span> book. This is because for each assignment based off of this book, I always tend to look at the questions first, and then go to the specific sections with relevant information to answer the questions as fast as possible, while ignoring much of the other parts of the book. If I had spent more time looking through the book, and examined the labs in each chapter, I might have been able to implement the requirements in time.</p>
+<p>This being said, below is the checklist for the deliverable requirements.</p>
+<ul>
+<li><p>Use a .venv or renv virtual environment with appropriate workflows</p>
+<ul>
+<li>This is achieved through RStudio. The renv folder can be seen in the repository for the source code.</li>
+</ul></li>
+<li><p>Build a predictive model, and…(series of requirements)</p>
+<ul>
+<li>This series of requirements was challenging to attempt, and unfortunately I had not been able to fulfill them.</li>
+</ul></li>
+<li><p>Use requests or httr2 to access predictions from this model from within your shiny web application</p>
+<ul>
+<li>This is based directly off of the previous requirement, and has not been fulfilled.</li>
+</ul></li>
+<li><p>Use GitHub Actions to deploy your project report to GitHub Pages, scheduled on push and workflow-dispatch</p>
+<ul>
+<li>This has been achieved. Please see “dispatch.yml” in the repository for this book. This was done with the help of <span class="citation" data-cites="deploy"><span>“Deploying Sites”</span> (<a href="#ref-deploy" role="doc-biblioref">n.d.</a>)</span>.</li>
+</ul></li>
+<li><p>Store all data used in your web application and project report in AWS S3 and interface with it using duckdb</p>
+<ul>
+<li>This requirement was partially complete. This is because I had successfully stored data into duckdb. Details can be seen in the Transform chapter.</li>
+</ul></li>
+<li><p>Proper use of environment variables/secrets management for AWS credentials, EC2 pub- lic IPv4 address, and other relevant information</p>
+<ul>
+<li>Not fulfilled.</li>
+</ul></li>
+<li><p>Multiple levels of logging for user interactions and external API calls within the shiny web application</p>
+<ul>
+<li>Not fulfilled.</li>
+</ul></li>
+<li><p>User-friendly front-end interface, with straightforward navigation and responsive components</p>
+<ul>
+<li>I had intentionally designed the interface of the shiny app to be as user friendly as possible. This was achieved through the use of tabs, bookmarks, labels for various charts, and useful prompts.</li>
+</ul></li>
+<li><p>Incorporate a variety of data visualizations using ggplot, gt, and optionally plotly</p>
+<ul>
+<li>ggplot was used extensively in the data solution, and a variety of plots were used, each with a unique configuration and theme. Labels, titles, legends were also included.</li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="references" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="references"><span class="header-section-number">8.2</span> References</h2>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-deploy" class="csl-entry" role="listitem">
+<span>“Deploying Sites.”</span> n.d. <a href="https://dev.to/davorg/deploying-github-pages-site-with-github-workflows-3bhh" class="uri">https://dev.to/davorg/deploying-github-pages-site-with-github-workflows-3bhh</a>.
+</div>
+<div id="ref-devops" class="csl-entry" role="listitem">
+<span>“Dev Ops for Data Science.”</span> n.d. <a href="https://do4ds.com/" class="uri">https://do4ds.com/</a>.
+</div>
+</div>
 </section>
 
 </main> <!-- /main -->

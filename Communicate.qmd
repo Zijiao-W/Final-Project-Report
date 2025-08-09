@@ -1,25 +1,74 @@
 ---
 title: "Communicate"
 format: html
+execute:
+  eval: false
 ---
 
-## Quarto
+## Communication
 
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+The plan for this section was to communicate technicalities as well as terminology that needs to be elaborated upon. However, since the previous chapters have already achieved this, I wanted to take this chapter as a space to outline the requirements for this data solution and whether or not they were fulfilled.
 
-## Running Code
+### Technical Requirements
 
-When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+-   Apply modeling techniques learned from previous courses, such as (but not limited to) machine learning, computer vision, simulation, optimization, and data visualization
 
-```{r}
-1 + 1
-```
+    -   All requirements here have been satisfied. I have used a linear model and tested a GLM, which makes full use of my knowledge from Stat 331 and Stat 431. As well, the assessment of these models also takes from Stat 231 and Stat 332.
 
-You can add options to executable code like this
+-   Perform validation, testing, and manual quality assurance before certifying new models and metrics for use, using meta-analytic criteria where possible
 
-```{r}
-#| echo: false
-2 * 2
-```
+    -   The model used in this data solution was tested, as mentioned in the Model chapter. As for other metrics, they were also independently tested in the files "Final Project Test Environment.R" and "Final Project Shiny.R". The former covers all steps from import to transform, and the model chapter, while the latter covers the visualization step, which is exclusive to the shiny app. These files are found in the GitHub repository of the source code.
 
-The `echo: false` option disables the printing of code (only output is displayed).
+-   Apply correct programming habits such as extensively commented, well-organized, and thoroughly tested code, with version control utilized throughout the project
+
+    -   The program has been organized to the best of my ability, and everything is commented. Version control is achieved via GitHub. Again, the code was tested through the 2 test environments mentioned above.
+
+-   Write a maintainable, performant, and scalable Shiny application, leveraging reactive programming and similar strong software engineering principles
+
+    -   I would argue that the shiny application I have built is scalable, as it has the potential to add in more players, more teams, as well as more seasons to broaden the scope. The data that I have used, as mentioned in the Import chapter, was entirely from the year 2024. As well, the application is performant, and has an interactive interface that is easy to navigate.
+
+### Deliverable Requirements
+
+For the deliverable requirements, I am aware that much of it has not been implemented. I had attempted to add them into the program, using knowledge from @devops. However, my attempts have not been successful, and given that I had to manage multiple assessments at once, I had decided to not fulfill these requirements.
+
+With some introspection, it is revealed that I had perhaps spent too little time looking at the @devops book. This is because for each assignment based off of this book, I always tend to look at the questions first, and then go to the specific sections with relevant information to answer the questions as fast as possible, while ignoring much of the other parts of the book. If I had spent more time looking through the book, and examined the labs in each chapter, I might have been able to implement the requirements in time.
+
+This being said, below is the checklist for the deliverable requirements.
+
+-   Use a .venv or renv virtual environment with appropriate workflows
+
+    -   This is achieved through RStudio. The renv folder can be seen in the repository for the source code.
+
+-   Build a predictive model, and...(series of requirements)
+
+    -   This series of requirements was challenging to attempt, and unfortunately I had not been able to fulfill them.
+
+-   Use requests or httr2 to access predictions from this model from within your shiny web application
+
+    -   This is based directly off of the previous requirement, and has not been fulfilled.
+
+-   Use GitHub Actions to deploy your project report to GitHub Pages, scheduled on push and workflow-dispatch
+
+    -   This has been achieved. Please see "dispatch.yml" in the repository for this book. This was done with the help of @deploy.
+
+-   Store all data used in your web application and project report in AWS S3 and interface with it using duckdb
+
+    -   This requirement was partially complete. This is because I had successfully stored data into duckdb. Details can be seen in the Transform chapter.
+
+-   Proper use of environment variables/secrets management for AWS credentials, EC2 pub- lic IPv4 address, and other relevant information
+
+    -   Not fulfilled.
+
+-   Multiple levels of logging for user interactions and external API calls within the shiny web application
+
+    -   Not fulfilled.
+
+-   User-friendly front-end interface, with straightforward navigation and responsive components
+
+    -   I had intentionally designed the interface of the shiny app to be as user friendly as possible. This was achieved through the use of tabs, bookmarks, labels for various charts, and useful prompts.
+
+-   Incorporate a variety of data visualizations using ggplot, gt, and optionally plotly
+
+    -   ggplot was used extensively in the data solution, and a variety of plots were used, each with a unique configuration and theme. Labels, titles, legends were also included.
+
+## References

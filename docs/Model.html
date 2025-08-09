@@ -54,7 +54,27 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -103,6 +123,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -198,8 +247,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#quarto" id="toc-quarto" class="nav-link active" data-scroll-target="#quarto"><span class="header-section-number">7.1</span> Quarto</a></li>
-  <li><a href="#running-code" id="toc-running-code" class="nav-link" data-scroll-target="#running-code"><span class="header-section-number">7.2</span> Running Code</a></li>
+  <li><a href="#model-choice" id="toc-model-choice" class="nav-link active" data-scroll-target="#model-choice"><span class="header-section-number">7.1</span> Model Choice</a></li>
+  <li><a href="#model-fit" id="toc-model-fit" class="nav-link" data-scroll-target="#model-fit"><span class="header-section-number">7.2</span> Model Fit</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">7.3</span> References</a></li>
   </ul>
 </nav>
     </div>
@@ -225,28 +275,45 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="quarto" class="level2" data-number="7.1">
-<h2 data-number="7.1" class="anchored" data-anchor-id="quarto"><span class="header-section-number">7.1</span> Quarto</h2>
-<p>Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <a href="https://quarto.org" class="uri">https://quarto.org</a>.</p>
+<section id="model-choice" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="model-choice"><span class="header-section-number">7.1</span> Model Choice</h2>
+<p>As mentioned in previous chapters, a linear model was chosen for xWOBA. The rationale behind the use of a linear model is that it is sufficiently simple, easy to implement, and versatile for many scenarios, which is relevant for technical requirements of this data solution.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>xwoba_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(xwoba <span class="sc">~</span> bb <span class="sc">+</span> hbp <span class="sc">+</span> x1b <span class="sc">+</span> x2b <span class="sc">+</span> x3b <span class="sc">+</span> hr, <span class="at">data =</span> transform_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>As well, the model would be relevant for the audience of the data solution itself, which was discussed in the Visualize chapter.</p>
 </section>
-<section id="running-code" class="level2" data-number="7.2">
-<h2 data-number="7.2" class="anchored" data-anchor-id="running-code"><span class="header-section-number">7.2</span> Running Code</h2>
-<p>When you click the <strong>Render</strong> button a document will be generated that includes both content and the output of embedded code. You can embed code like this:</p>
+<section id="model-fit" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="model-fit"><span class="header-section-number">7.2</span> Model Fit</h2>
+<p>Before settling on the model, it is important to assess model fit. This is done by looking at the summary statistics.</p>
+<p><img src="images/clipboard-2346113343.png" class="img-fluid" width="534"></p>
+<p>Figure 6.1, Linear Model Fit</p>
+<p>As seen in Figure 6.1, there is evidence against the linear model being very effective. For example, none of the factors have a p value that is siginificant enough to explain the response, which is xWOBA. We also see that the <span class="math inline">\(R^2\)</span> value is 0.26, meaning that 26% of the variation in the response can be explained by the model. This means that the model is not very strong.</p>
+<p>As well, Figure 5.3, which compares the predicted and calculated xWOBA, also demonstrates that the model is not the most fitting. In that figure, we see a lot of values clustered at the bottom of the chart, and that the scatter plot is not in the general form of a straight line, which it should be if the model is perfect.</p>
+<p>This prompts for an alternative model. Even though the linear model should not be ruled out completely, this demonstrates that it is not a very good fit.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>xwoba_2 <span class="ot">&lt;-</span> <span class="fu">glm</span>(xwoba <span class="sc">~</span> bb <span class="sc">+</span> hbp <span class="sc">+</span> x1b <span class="sc">+</span> x2b <span class="sc">+</span> x3b <span class="sc">+</span> hr, <span class="at">data =</span> transform_data, </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">family =</span> <span class="fu">gaussian</span>(<span class="at">link =</span> <span class="st">"identity"</span>))</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(xwoba_2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-<p>You can add options to executable code like this</p>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 4</code></pre>
-</div>
-</div>
-<p>The <code>echo: false</code> option disables the printing of code (only output is displayed).</p>
+<p>Using knowledge from Stat 431, a Gaussian GLM with the identity link was used to test it out.</p>
+<p><img src="images/clipboard-1314159435.png" class="img-fluid" width="511"></p>
+<p>Figure 6.2, GLM fit</p>
+<p>The results are also not the most ideal. The p values for each of the parameters is large enough to indicate that there is strong evidence against them being explanatory variates. The algorithm also took 2 iterations to converge, which is relatively short. As well, the null and residual deviance are relatively low, along with a very low AIC value.</p>
+<p>This indicates that both the linear model and the GLM are somewhat adequate, but not the best model for xWOBA.</p>
+<p>Another potential model to use would be KNN (K Nearest Neighbours) <span class="citation" data-cites="modelling"><span>“Modelling xwOBA”</span> (<a href="#ref-modelling" role="doc-biblioref">n.d.</a>)</span>. However, the implementation details and requirements are behind the scope of my ability, which means it was not used in this data solution. For the sake of versatility and simplicity, I adopted the linear model as the final choice for the data solution.</p>
+<p>The code for these model fit tests can be found in the “Final Project Test Environment.R” file in the GitHub repository of the source code for the shiny app.</p>
+</section>
+<section id="references" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="references"><span class="header-section-number">7.3</span> References</h2>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-modelling" class="csl-entry" role="listitem">
+<span>“Modelling xwOBA.”</span> n.d. <a href="https://medium.com/@thomasjamesnestico/modelling-xwoba-with-knn-9b004e93861a" class="uri">https://medium.com/@thomasjamesnestico/modelling-xwoba-with-knn-9b004e93861a</a>.
+</div>
+</div>
 </section>
 
 </main> <!-- /main -->

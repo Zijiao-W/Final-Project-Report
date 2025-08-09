@@ -5,7 +5,7 @@ execute:
   eval: false
 ---
 
-# Transforming Data
+## Transforming Data
 
 After tidying the data, it is ready to be transformed for use.
 
@@ -29,9 +29,55 @@ transform_data <- clean_data |>
     level = if_else(level == "Maj-NL", "National League", "American League"))
 ```
 
-# Model Fitting
+The intention of making each player assigned to one team and level (league) only is because it makes it easier to work with in the visualize step.
 
-A linear model is constructed according to plan in order to
+After that, xWOBA as a formula is directly calculated. The formula is taken from the MLB website,
+
+*"All hit types are valued in the same fashion for xwOBA as they are in the formula for standard wOBA: (unintentional BB factor x unintentional BB + HBP factor x HBP + 1B factor x 1B + 2B factor x 2B + 3B factor x 3B + HR factor x HR)/(AB + unintentional BB + SF + HBP), where "factor" indicates the adjusted run expectancy of a batting event in the context of the season as a whole."*
+
+The terminology used here is highly technical, so each term will be elaborated upon here.
+
+-   Unintentional BB: this is an unintentional base on balls that occurs when a pitcher throws four balls outside the strike zone, without the intention of giving the batter a free pass. It is calculated via $BB - IBB$, which are base on balls and intentional walk respectively
+
+    -   IBB: intentional walk. Occurs when the defending team chooses to walk a batter on purpose
+
+-   HBP: hit by pitch. This occurs when a batter is struck by the ball without singing at it
+
+-   1B: this represents single, which means the batter hits the ball and reaches first base without intervention
+
+-   2B: a double, which holds the same idea as 1B, but it is second base instead of first
+
+-   3B: a triple, similar to a double, but for third base
+
+-   HR: home run. This is when a batter hits a ball and achieves home run without being put out
+
+-   AB: an at bat that occurs when the batter reaches base via a hit, error, or a fielder's choice
+
+-   SF: sacrifice fly, which is defined by the batter hitting a flying ball to the outfield or foul territory and allows the runner to score
+
+-   Overall, the equation expressed in mathematical terms would look like this: $\frac{a\cdot BB + b\cdot HBP + c\cdot 1B + d\cdot 2B + e \cdot 3B + f\cdot HR}{AB + BB + SF + HBP}$, where a, b, c, d, e, f are factors for BB, HBP, 1B, 2B, 3B, HR respectively.
+
+For more information regarding the terminology and how xWOBA is calculated, refer to @xwoba and the MLB glossary in general.
+
+It was mentioned in the definition that there are factors multiplied against each value. This factor changes every year and is determined individually. The factors are found on @xwobafactor, and the values are entered manually.
+
+![](images/clipboard-3107556199.png)
+
+Table 4.1, xWOBA factors
+
+The calculated xWOBA is also rounded to 5 digits to make it more accessible.
+
+At the end, the level column will now display "American League" or "National League" so it becomes clearer what it represents. All these changes can be seen in Figure 4.2.
+
+![](images/clipboard-1958848541.png)
+
+Figure 4.2, Transformed data
+
+## Model Fitting
+
+A linear model is constructed according to plan in order to model xWOBA - the details of its implementation and model fit will be discussed in the Model chapter.
+
+The general idea is that the model is built to predict xWOBA, and its values are fitted onto each player in the existing data set in order to compare the fitted vs the calculated xWOBA in the visualization stage.
 
 ```{r}
 # Build model to predict xWOBA
@@ -45,9 +91,9 @@ transform_data <- transform_data |>
   filter(pa >= 10)
 ```
 
-# DuckDB Storage
+## DuckDB Storage
 
-The next step focuses on storing the data into DuckDB to use it, as an effort to satisfy the deliverable requirement (@duckdb).
+The next step focuses on storing the data into DuckDB for use, as an effort to satisfy the deliverable requirement (@duckdb).
 
 ```{r}
 # Stores data into duckdb
@@ -61,4 +107,6 @@ working_data <- as.data.frame(tbl(con, "transform_data"))
 
 The option overwrite is set to true to enable overwrites to the database if changes need to be made. The database is then retrieved as a dataframe to use in visualizations, as visualizations require the data to be in data frame form.
 
-# References
+Here it might be observed that some deliverable requirements appear to be missing at this stage. More details will be discussed in the Communication chapter.
+
+## References
